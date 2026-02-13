@@ -153,7 +153,8 @@ std::ostream& operator << (std::ostream& os, const String& str) {
 
 std::istream& operator >> (std::istream& is, String& str) {
     char buffer[1024] {};
-    is.read((char*)buffer, sizeof(buffer));
+    is >> buffer;
+    str = String(buffer);
     return is;
 }
 
