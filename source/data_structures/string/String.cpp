@@ -20,18 +20,23 @@ String::String(const char* data) {
     }
 
     this->setSize(strlen(data));
-    this->setCapacity(this->getCapacity() * 2);
+    this->setCapacity(this->getSize() * 2);
     this->data = new char[this->getSize() + 1];
     strncpy(this->data, data, strlen(data));
 }
 
 String::String(size_t capacity) {
+    if (capacity == 0) {
+        throw std::logic_error("Capacity must be >= 1");
+    }
+
     this->setSize(0);
     this->setCapacity(capacity);
     this->data = new char[this->getCapacity()];
+    this->data[this->getSize()] = '\0';
 }
 
-String& String::operator=(const String& other) {
+String& String::operator = (const String& other) {
     if (this != &other) {
         free();
         copyFrom(other);
@@ -39,7 +44,7 @@ String& String::operator=(const String& other) {
     return *this;
 }
 
-String& String::operator=(String&& other) noexcept {
+String& String::operator = (String&& other) noexcept {
     if (this != &other) {
         free();
         moveTo(std::move(other));
@@ -47,13 +52,14 @@ String& String::operator=(String&& other) noexcept {
     return *this;
 }
 
-String& String::operator+=(const String& other) {
+String& String::operator += (const String& other) {
     size_t overallSize = this->getSize() + other.getSize() + 1;
     if (this->getCapacity() < overallSize) {
         this->resize(overallSize * 2);
     }
 
     strncat(this->data, other.getData(), other.getSize());
+    this->setSize(this->getSize() + other.getSize());
     return *this;
 }
 
@@ -121,14 +127,14 @@ const char* String::getData() const {
     return this->data;
 }
 
-char& String::operator[](size_t index) {
+char& String::operator [] (size_t index) {
     if (index >= this->getSize()) {
         throw std::out_of_range("Index is out of range");
     }
     return this->data[index];
 }
 
-const char& String::operator[](size_t index) const {
+const char& String::operator [] (size_t index) const {
     if (index >= this->getSize()) {
         throw std::out_of_range("Index is out of range");
     }
