@@ -1,10 +1,10 @@
 #include "SetOfElementaryEvents.h"
 
-SetOfElementaryEvents::SetOfElementaryEvents(const Vector<Event>& events) {
+SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ЕlementaryEvent>& events) {
     this->events = events;
 }
 
-void SetOfElementaryEvents::addEvent(const Event& event) {
+void SetOfElementaryEvents::addEvent(const ЕlementaryEvent& event) {
     if (this->idSet.hasNumber(event.getEventId())) return;
     this->idSet.addNumber(event.getEventId());
     this->events.push(event);
@@ -21,7 +21,7 @@ void SetOfElementaryEvents::removeEvent(int32_t eventId) {
     this->idSet.removeNumber(eventId);
 }
 
-const Vector<Event>& SetOfElementaryEvents::getEvents() const {
+const Vector<ЕlementaryEvent>& SetOfElementaryEvents::getEvents() const {
     return this->events;
 }
 
@@ -42,7 +42,7 @@ std::istream& operator >> (std::istream& is, SetOfElementaryEvents& setOfElement
 
     for (int i = 0; i < countOfEvents; i++) {
         is >> currentDescription;
-        Event currentEvent = Event(currentDescription);
+        ЕlementaryEvent currentEvent = ЕlementaryEvent(currentDescription);
         setOfElementaryEvents.addEvent(currentEvent);
     }
 
