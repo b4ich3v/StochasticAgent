@@ -1,20 +1,20 @@
 #include "BitSet.h"
 #include "Vector.hpp"
-#include "Event.h"
+#include "ЕlementaryEvent.h"
 
 class SetOfElementaryEvents {
 private:
-    Vector<Event> events;
+    Vector<ЕlementaryEvent> events;
     BitSet idSet;
 
     void free();
 
 public:
     SetOfElementaryEvents() = default;
-    SetOfElementaryEvents(const Vector<Event>& events);
+    SetOfElementaryEvents(const Vector<ЕlementaryEvent>& events);
 
-    const Vector<Event>& getEvents() const;
-    void addEvent(const Event& event);
+    const Vector<ЕlementaryEvent>& getEvents() const;
+    void addEvent(const ЕlementaryEvent& event);
     void removeEvent(int32_t eventId);
 
     friend std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& event);
