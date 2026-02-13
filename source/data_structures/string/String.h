@@ -24,7 +24,6 @@ public:
     String& operator = (const String& other);
     String& operator = (String&& other) noexcept;
     String& operator += (const String& other);
-    String& operator += (String&& other) noexcept;
     ~String();
 
     size_t getSize() const;
@@ -38,4 +37,4 @@ public:
     friend std::istream& operator >> (std::istream& is, String& str);
 };
 
-
+String operator + (const String& str1, const String& str2);
