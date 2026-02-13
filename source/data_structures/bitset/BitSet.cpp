@@ -204,6 +204,8 @@ int32_t BitSet::getTolerance() const {
 bool BitSet::hasNumber(int32_t number) const {
     if (number < 0) {
         throw std::logic_error("Negative number");
+    } else if (this->getBucketIndex(number) + 1 > this->getCountOfBuckets()) {
+        return false;
     }
 
     size_t indexInBucket = this->getIndexInCurrentBucket(number);
