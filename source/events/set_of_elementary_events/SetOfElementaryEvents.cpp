@@ -26,7 +26,11 @@ const Vector<Event>& SetOfElementaryEvents::getEvents() const {
 }
 
 std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& setOfElementaryEvents) {
-    for (int i = 0; i < setOfElementaryEvents.getEvents().getSize(); i++) os << setOfElementaryEvents.getEvents()[i];
+    for (int i = 0; i < setOfElementaryEvents.getEvents().getSize(); i++) {
+        if (setOfElementaryEvents.idSet.hasNumber(setOfElementaryEvents.getEvents()[i].getEventId())) {
+            os << setOfElementaryEvents.getEvents()[i];
+        }
+    }
     return os;
 }
 
