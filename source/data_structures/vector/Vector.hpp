@@ -51,7 +51,7 @@ Vector<T>::Vector() {
 }
 
 template<class T>
-Vector<T>::Vector(const Vector &other) {
+Vector<T>::Vector(const Vector& other) {
     copyFrom(other);
 }
 
@@ -63,12 +63,12 @@ Vector<T>::Vector(size_t capacity) {
 }
 
 template<class T>
-Vector<T>::Vector(Vector &&other) noexcept {
+Vector<T>::Vector(Vector&& other) noexcept {
     moveTo(std::move(other));
 }
 
 template<class T>
-Vector<T> &Vector<T>::operator=(const Vector &other) {
+Vector<T>& Vector<T>::operator=(const Vector& other) {
     if (this != &other) {
         free();
         copyFrom(other);
@@ -77,7 +77,7 @@ Vector<T> &Vector<T>::operator=(const Vector &other) {
 }
 
 template<class T>
-Vector<T> &Vector<T>::operator=(Vector &&other) noexcept {
+Vector<T>& Vector<T>::operator=(Vector&& other) noexcept {
     if (this != &other) {
         free();
         moveTo(std::move(other));
@@ -105,7 +105,7 @@ void Vector<T>::resize(size_t newCapacity) {
 }
 
 template<class T>
-void Vector<T>::copyFrom(const Vector &other) {
+void Vector<T>::copyFrom(const Vector& other) {
     this->data = new T[other.getCapacity()] {};
     this->setSize(other.getSize());
     this->setCapacity(other.getCapacity());
@@ -116,7 +116,7 @@ void Vector<T>::copyFrom(const Vector &other) {
 }
 
 template<class T>
-void Vector<T>::moveTo(Vector &&other) noexcept {
+void Vector<T>::moveTo(Vector&& other) noexcept {
     this->data = other.data;
     this->setSize(other.getSize());
     this->setCapacity(other.getCapacity());
@@ -145,7 +145,7 @@ void Vector<T>::setCapacity(size_t newCapacity) {
 }
 
 template<class T>
-void Vector<T>::push(const T &element) {
+void Vector<T>::push(const T& element) {
     if (this->getSize() == this->getCapacity()) {
         this->resize(getCapacity() * 2);
     }
@@ -154,7 +154,7 @@ void Vector<T>::push(const T &element) {
 }
 
 template<class T>
-void Vector<T>::push(T &&element) {
+void Vector<T>::push(T&& element) {
     if (this->getSize() == this->getCapacity()) {
         this->resize(getCapacity() * 2);
     }
@@ -200,7 +200,7 @@ template <class T>
 std::ostream& operator << (std::ostream& os, const Vector<T>& vector) {
     size_t sizeOfVector = vector.getSize();
 
-    for (int i = 0; i < (int)sizeOfVector; ++i) {
+    for (int i = 0; i < (int)sizeOfVector; i++) {
         os << vector[i];
         if (i != sizeOfVector - 1) os << " ";
     }
