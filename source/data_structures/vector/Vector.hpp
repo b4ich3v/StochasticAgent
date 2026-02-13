@@ -47,7 +47,7 @@ template<class T>
 Vector<T>::Vector() {
     this->setCapacity(8);
     this->setSize(0);
-    this->data = new T[this->capacity] {};
+    this->data = new T[this->getCapacity()] {};
 }
 
 template<class T>
@@ -99,9 +99,12 @@ void Vector<T>::resize(size_t newCapacity) {
     T* newData = new T[newCapacity] {};
     this->setCapacity(newCapacity);
 
-    for (int i = 0; i < this->size; i++) {
+    for (int i = 0; i < this->getSize(); i++) {
         newData[i] = this->data[i];
     }
+
+    delete[] data;
+    data = newData;
 }
 
 template<class T>
@@ -110,7 +113,7 @@ void Vector<T>::copyFrom(const Vector& other) {
     this->setSize(other.getSize());
     this->setCapacity(other.getCapacity());
 
-    for (int i = 0; i < this->size; i++) {
+    for (size_t i = 0; i < this->getSize(); i++) {
         this->data[i] = other.data[i];
     }
 }
@@ -182,7 +185,7 @@ size_t Vector<T>::getSize() const {
 
 template<class T>
 T &Vector<T>::operator[](size_t index) {
-    if (index > this->getSize()) {
+    if (index > this->getSize() - 1) {
         throw std::logic_error("Out of range");
     }
     return this->data[index];
@@ -190,7 +193,7 @@ T &Vector<T>::operator[](size_t index) {
 
 template<class T>
 const T &Vector<T>::operator[](size_t index) const {
-    if (index > this->getSize()) {
+    if (index > this->getSize() - 1) {
         throw std::logic_error("Out of range");
     }
     return this->data[index];
@@ -200,7 +203,7 @@ template <class T>
 std::ostream& operator << (std::ostream& os, const Vector<T>& vector) {
     size_t sizeOfVector = vector.getSize();
 
-    for (int i = 0; i < (int)sizeOfVector; i++) {
+    for (size_t i = 0; i < sizeOfVector; i++) {
         os << vector[i];
         if (i != sizeOfVector - 1) os << " ";
     }
@@ -219,7 +222,7 @@ std::istream& operator >> (std::istream& is, Vector<T>& vector) {
     vector.data = new T[capacityOfVector] {};
     vector.setSize(sizeOfVector);
     vector.setCapacity(capacityOfVector);
-    for (int i = 0; i < sizeOfVector; i++) {
+    for (size_t i = 0; i < sizeOfVector; i++) {
         is >> vector.data[i];
     }
 
