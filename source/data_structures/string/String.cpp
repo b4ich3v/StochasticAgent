@@ -20,7 +20,7 @@ String::String(const char* data) {
     }
 
     this->setSize(strlen(data));
-    this->setCapacity(this->getSize() * 2);
+    this->setCapacity(std::max((int)this->getSize() * 2, 1));
     this->data = new char[this->getCapacity()];
     strncpy(this->data, data, strlen(data));
     this->data[this->getSize()] = '\0';
