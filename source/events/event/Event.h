@@ -10,6 +10,7 @@ private:
     void setEventDescription(const String& eventDescription);
 
 public:
+    Event() = default;
     Event(const String& eventDescription);
     Event(const char* eventDescription);
 
