@@ -21,8 +21,9 @@ String::String(const char* data) {
 
     this->setSize(strlen(data));
     this->setCapacity(this->getSize() * 2);
-    this->data = new char[this->getSize() + 1];
+    this->data = new char[this->getCapacity()];
     strncpy(this->data, data, strlen(data));
+    this->data[this->getSize()] = '\0';
 }
 
 String::String(size_t capacity) {
