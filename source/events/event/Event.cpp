@@ -1,42 +1,42 @@
-#include "Event.h"
+#include "ЕlementaryEvent.h"
 
-int32_t Event::idMask = 0;
+int32_t ЕlementaryEvent::idMask = 0;
 
-Event::Event(const char* eventDescription) {
+ЕlementaryEvent::ЕlementaryEvent(const char* eventDescription) {
     this->setEventDescription(String(eventDescription));
     this->setId();
 }
 
-Event::Event(const String& eventDescription) {
+ЕlementaryEvent::ЕlementaryEvent(const String& eventDescription) {
     this->setEventDescription(eventDescription);
     this->setId();
 }
 
-void Event::setId() {
+void ЕlementaryEvent::setId() {
     this->realId = this->idMask;
     this->idMask += 1;
 }
 
-void Event::setEventDescription(const String& eventDescription) {
+void ЕlementaryEvent::setEventDescription(const String& eventDescription) {
     this->eventDescription = eventDescription;
 }
 
-int32_t Event::getEventId() const {
+int32_t ЕlementaryEvent::getEventId() const {
     return this->realId;
 }
 
-const String &Event::getEventDescriptionn() const {
+const String &ЕlementaryEvent::getEventDescriptionn() const {
     return this->eventDescription;
 }
 
-std::istream& operator >> (std::istream& is, Event& event) {
+std::istream& operator >> (std::istream& is, ЕlementaryEvent& event) {
     String str;
     is >> str;
-    event = Event(str);
+    event = ЕlementaryEvent(str);
     return is;
 }
 
-std::ostream& operator << (std::ostream& os, const Event& event) {
+std::ostream& operator << (std::ostream& os, const ЕlementaryEvent& event) {
     os << "Event id: " << event.getEventId() << "\n";
     os << "Event description: " << event.getEventDescriptionn() << "\n";
     return os;
