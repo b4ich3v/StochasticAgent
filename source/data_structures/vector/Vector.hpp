@@ -68,7 +68,7 @@ Vector<T>::Vector(Vector&& other) noexcept {
 }
 
 template<class T>
-Vector<T>& Vector<T>::operator=(const Vector& other) {
+Vector<T>& Vector<T>::operator = (const Vector& other) {
     if (this != &other) {
         free();
         copyFrom(other);
@@ -77,7 +77,7 @@ Vector<T>& Vector<T>::operator=(const Vector& other) {
 }
 
 template<class T>
-Vector<T>& Vector<T>::operator=(Vector&& other) noexcept {
+Vector<T>& Vector<T>::operator = (Vector&& other) noexcept {
     if (this != &other) {
         free();
         moveTo(std::move(other));
@@ -99,7 +99,7 @@ void Vector<T>::resize(size_t newCapacity) {
     T* newData = new T[newCapacity] {};
     this->setCapacity(newCapacity);
 
-    for (int i = 0; i < this->getSize(); i++) {
+    for (size_t i = 0; i < this->getSize(); i++) {
         newData[i] = this->data[i];
     }
 
@@ -184,16 +184,20 @@ size_t Vector<T>::getSize() const {
 }
 
 template<class T>
-T &Vector<T>::operator[](size_t index) {
-    if (index > this->getSize() - 1) {
-        throw std::logic_error("Out of range");
+T &Vector<T>::operator [] (size_t index) {
+    if (this->getSize() == 0)  {
+        throw std::logic_error("The vector is empty");
+    } else if (index > this->getSize() - 1) {
+        throw std::logic_error("Out of range or empty vector");
     }
     return this->data[index];
 }
 
 template<class T>
-const T &Vector<T>::operator[](size_t index) const {
-    if (index > this->getSize() - 1) {
+const T &Vector<T>::operator [] (size_t index) const {
+    if (this->getSize() == 0)  {
+        throw std::logic_error("The vector is empty");
+    } else if (index > this->getSize() - 1) {
         throw std::logic_error("Out of range");
     }
     return this->data[index];
