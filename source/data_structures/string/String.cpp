@@ -54,6 +54,10 @@ String& String::operator = (String&& other) noexcept {
 }
 
 String& String::operator += (const String& other) {
+    if (this == &other) {
+        throw std::logic_error("Self append");
+    }
+
     size_t overallSize = this->getSize() + other.getSize() + 1;
     if (this->getCapacity() < overallSize) {
         this->resize(overallSize * 2);
