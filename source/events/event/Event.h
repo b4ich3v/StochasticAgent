@@ -16,6 +16,6 @@ public:
     const String& getEventDescriptionn() const;
     int32_t getEventId() const;
 
-    friend std::ofstream& operator << (std::ofstream& os, const Event& event);
-    friend std::ifstream& operator >> (std::ifstream& is, Event& event);
+    friend std::ostream& operator << (std::ostream& os, const Event& event);
+    friend std::istream& operator >> (std::istream& is, Event& event);
 };
