@@ -112,7 +112,7 @@ bool BitSet::isOverTolerance(int32_t number) const {
 void BitSet::addNumber(int32_t number) {
     if ((this->getTolerance() != -1 && this->getTolerance() < number) || number < 0)  {
         throw std::logic_error("The number is over the tolerance or it is negative");
-    } else if (this->getTolerance() == -1 && this->getBucketIndex(number) > this->getCountOfBuckets()) {
+    } else if (this->getTolerance() == -1 && this->getBucketIndex(number) >= this->getCountOfBuckets()) {
         this->resize(this->getBucketIndex(number) + 1);
     }
 
