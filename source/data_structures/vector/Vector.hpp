@@ -57,6 +57,10 @@ Vector<T>::Vector(const Vector& other) {
 
 template<class T>
 Vector<T>::Vector(size_t capacity) {
+    if (capacity == 0) {
+        throw std::logic_error("Capacity must be >= 1");
+    }
+
     this->setCapacity(capacity);
     this->setSize(0);
     this->data = new T[this->getCapacity()] {};
