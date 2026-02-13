@@ -57,17 +57,6 @@ String& String::operator+=(const String& other) {
     return *this;
 }
 
-String& String::operator+=(String&& other) noexcept {
-    size_t overallSize = this->getSize() + other.getSize() + 1;
-    if (this->getCapacity() < overallSize) {
-        this->resize(overallSize * 2);
-    }
-
-    strncat(this->data, other.getData(), other.getSize());
-    this->data[this->getSize()] = '\0';
-    return *this;
-}
-
 String::~String() {
     free();
 }
@@ -154,7 +143,11 @@ std::ostream& operator << (std::ostream& os, const String& str) {
 std::istream& operator >> (std::istream& is, String& str) {
     char buffer[1024] {};
     is.read((char*)buffer, sizeof(buffer));
-
-
     return is;
+}
+
+String operator + (const String& str1, const String& str2) {
+    String result = str1;
+    result += str2;
+    return result;
 }
