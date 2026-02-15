@@ -2,11 +2,9 @@
 
 
 int main() {
-    BitSet b;
-    b.addNumber(-1);
-    b.addNumber(1313);
-    b.addNumber(1);
-    b.addNumber(23);
+    BitSet b(10);
+    // b.addNumber(11); 
+    b.addNumber(10);
     std::cout << b;
 
     return 0;

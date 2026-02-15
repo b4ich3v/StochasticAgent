@@ -1,3 +1,4 @@
+#include "source/events/set_of_elementary_events/omega/Omega.h"
 #include "source/events/set_of_elementary_events/event/Event.h"
 
 
@@ -12,5 +13,5 @@ private:
     void constructSigmaAlgebra(); 
 
 public:
-    SigmaAlgebra(const Event& event);
+    SigmaAlgebra(const Omega& event);
 };

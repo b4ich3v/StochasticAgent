@@ -1,6 +1,6 @@
 #include "SigmaAlgebra.h"
 
-SigmaAlgebra::SigmaAlgebra(const Event& event) {
+SigmaAlgebra::SigmaAlgebra(const Omega& event) {
     this->constructSigmaAlgebra();
 }
 
