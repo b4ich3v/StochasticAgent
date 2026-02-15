@@ -1,4 +1,4 @@
-#include  "String.h"
+#include "../../data_structures/string/String.h"
 
 class ЕlementaryEvent {
 private:
