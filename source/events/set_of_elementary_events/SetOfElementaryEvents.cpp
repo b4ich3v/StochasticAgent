@@ -1,7 +1,10 @@
 #include "SetOfElementaryEvents.h"
 
-SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ЕlementaryEvent>& events) {
-    this->events = events;
+SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ЕlementaryEvent>& events): events(events) {
+    for (size_t i = 0; i < this->events.getSize(); i++) {
+        uint32_t currentId = this->events[i].getEventId();
+        this->idSet.addNumber(currentId);
+    }
 }
 
 void SetOfElementaryEvents::addEvent(const ЕlementaryEvent& event) {
@@ -17,8 +20,23 @@ void SetOfElementaryEvents::free() {
     this->idSet &= BitSet();
 }
 
+void SetOfElementaryEvents::clean() {
+    free();
+}
+
+size_t SetOfElementaryEvents::findEventIndexById(int32_t id) const {
+    for (size_t i = 0; i < this->events.getSize(); i++) {
+        if (this->events[i].getEventId() == id) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
 void SetOfElementaryEvents::removeEvent(int32_t eventId) {
     this->idSet.removeNumber(eventId);
+    this->events.remove_at(this->findEventIndexById(eventId));
 }
 
 const Vector<ЕlementaryEvent>& SetOfElementaryEvents::getEvents() const {

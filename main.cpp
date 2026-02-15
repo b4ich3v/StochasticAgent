@@ -1,5 +1,4 @@
-#include "source/data_structures/vector/Vector.hpp"
-#include "source/events/еlementary_еvent/ЕlementaryEvent.h"
+#include "source/events/set_of_elementary_events/SetOfElementaryEvents.h"
 
 
 int main() {
@@ -10,10 +9,11 @@ int main() {
     arr.push_back(e1);
     arr.push_back(e2);
     arr.push_back(e3);
-    // arr.remove_at(0);
-    // arr.remove_at(0);
 
-    std::cout << arr << std::endl;
+    SetOfElementaryEvents set(arr);
+    set.removeEvent(1);
+    std::cout << set;
 
+    
     return 0;
 }
