@@ -1,6 +1,7 @@
 #include <cstring>
 #include <iostream>
 
+
 class String {
 private:
     char* data = nullptr;

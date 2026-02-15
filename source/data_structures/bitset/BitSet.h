@@ -1,5 +1,6 @@
 #include  <iostream>
 
+
 class BitSet {
 private:
     uint8_t* data = nullptr;
