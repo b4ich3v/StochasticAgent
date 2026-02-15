@@ -1,9 +1,10 @@
-#include "source/events/set_of_elementary_events/SetOfElementaryEvents.h"
+#include "source/events/set_of_elementary_events/Event.h"
 
 
 class SigmaAlgebra {
 private:
-    Vector<SetOfElementaryEvents> containerOfEvents;
+    Vector<Event> containerOfEvents;
+    BitSet idSetForAllSubsetsOfEvents;
 
     void addEmptyEvent();
     void addTheAddition();
@@ -11,5 +12,5 @@ private:
     void constructSigmaAlgebra(); 
 
 public:
-    SigmaAlgebra(const SetOfElementaryEvents& setOfEvents);
+    SigmaAlgebra(const Event& event);
 };

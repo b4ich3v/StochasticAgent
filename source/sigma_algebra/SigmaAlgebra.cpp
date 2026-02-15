@@ -1,6 +1,6 @@
 #include "SigmaAlgebra.h"
 
-SigmaAlgebra::SigmaAlgebra(const SetOfElementaryEvents& events) {
+SigmaAlgebra::SigmaAlgebra(const Event& event) {
     this->constructSigmaAlgebra();
 }
 
@@ -11,5 +11,5 @@ void SigmaAlgebra::constructSigmaAlgebra() {
 }
 
 void SigmaAlgebra::addEmptyEvent() {
-    
+    this->idSetForAllSubsetsOfEvents.addNumber(-1);
 }
