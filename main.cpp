@@ -1,6 +1,7 @@
 #include "source/data_structures/vector/Vector.hpp"
 #include "source/events/еlementary_еvent/ЕlementaryEvent.h"
 
+
 int main() {
     ЕlementaryEvent e1(String("Event1"));
     ЕlementaryEvent e2(String("Event2"));
