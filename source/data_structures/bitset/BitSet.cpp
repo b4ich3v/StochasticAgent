@@ -1,5 +1,5 @@
 #include "BitSet.h"
-#include "../Constants.h"
+#include "../../Constants.h"
 
 BitSet::BitSet() {
     this->setCountOfBuckets(8);
