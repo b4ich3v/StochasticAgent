@@ -25,8 +25,8 @@ public:
     Vector& operator = (Vector&& other) noexcept;
     ~Vector();
 
-    void push(const T& element);
-    void push(T&& element);
+    void push_back(const T& element);
+    void push_back(T&& element);
     void pop();
 
     size_t getSize() const;
@@ -152,7 +152,7 @@ void Vector<T>::setCapacity(size_t newCapacity) {
 }
 
 template<class T>
-void Vector<T>::push(const T& element) {
+void Vector<T>::push_back(const T& element) {
     if (this->getSize() == this->getCapacity()) {
         this->resize(getCapacity() * 2);
     }
@@ -161,7 +161,7 @@ void Vector<T>::push(const T& element) {
 }
 
 template<class T>
-void Vector<T>::push(T&& element) {
+void Vector<T>::push_back(T&& element) {
     if (this->getSize() == this->getCapacity()) {
         this->resize(getCapacity() * 2);
     }

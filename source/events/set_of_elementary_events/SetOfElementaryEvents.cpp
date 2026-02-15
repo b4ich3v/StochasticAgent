@@ -7,7 +7,7 @@ SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ЕlementaryEvent>& eve
 void SetOfElementaryEvents::addEvent(const ЕlementaryEvent& event) {
     if (this->idSet.hasNumber(event.getEventId())) return;
     this->idSet.addNumber(event.getEventId());
-    this->events.push(event);
+    this->events.push_back(event);
 }
 
 void SetOfElementaryEvents::free() {
