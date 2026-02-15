@@ -1,4 +1,5 @@
-#include  <iostream>
+#include <iostream>
+#include <cstdint>
 
 
 class BitSet {
@@ -6,6 +7,7 @@ private:
     uint8_t* data = nullptr;
     int32_t maxTolerance = -1;
     size_t countOfBuckets = 0;
+    bool neutralNumber = false;
 
     void resize(size_t newCountOfBuckets);
     void copyFrom(const BitSet& other);
@@ -17,6 +19,7 @@ private:
 
     void setCountOfBuckets(size_t countOfBuckets);
     void setMaxTolerance(int32_t maxTolerance);
+    void setNeutralNumber(bool pred);
     bool isOverTolerance(int32_t number) const;
 
 public:
