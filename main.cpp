@@ -11,6 +11,7 @@ int main() {
     arr.push_back(e2);
     arr.push_back(e3);
     // arr.remove_at(0);
+    // arr.remove_at(0);
 
     std::cout << arr << std::endl;
 
