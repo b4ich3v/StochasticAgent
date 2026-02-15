@@ -27,7 +27,7 @@ public:
 
     void push_back(const T& element);
     void push_back(T&& element);
-    void remove_at(uint32_t index);
+    void remove_at(size_t index);
     void pop();
 
     size_t getSize() const;
@@ -171,7 +171,7 @@ void Vector<T>::push_back(T&& element) {
 }
 
 template<class T>
-void Vector<T>::remove_at(uint32_t index) {
+void Vector<T>::remove_at(size_t index) {
     if (index > this->getSize()) {
         throw std::logic_error("Out of range");
     }
