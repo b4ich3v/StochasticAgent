@@ -1,4 +1,4 @@
-#include "source/events/set_of_elementary_events/Event.h"
+#include "source/events/set_of_elementary_events/event/Event.h"
 
 
 class SigmaAlgebra {
