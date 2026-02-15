@@ -37,7 +37,7 @@ std::istream& operator >> (std::istream& is, ЕlementaryEvent& event) {
 }
 
 std::ostream& operator << (std::ostream& os, const ЕlementaryEvent& event) {
-    os << "Event id: " << event.getEventId() << "\n";
-    os << "Event description: " << event.getEventDescriptionn();
+    os << "{ [ Event id: " << event.getEventId() << " ], ";
+    os << "[ Event description: " << event.getEventDescriptionn() << " ] }";
     return os;
 }
