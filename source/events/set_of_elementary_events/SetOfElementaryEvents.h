@@ -1,6 +1,6 @@
-#include "BitSet.h"
-#include "Vector.hpp"
-#include "ЕlementaryEvent.h"
+#include "../../data_structures/bitset/BitSet.h"
+#include "../../data_structures/vector/Vector.hpp"
+#include "../еlementary_еvent/ЕlementaryEvent.h"
 
 class SetOfElementaryEvents {
 private:
