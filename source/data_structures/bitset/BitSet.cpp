@@ -6,7 +6,7 @@ BitSet::BitSet() {
     this->data = new uint8_t[this->getCountOfBuckets()];
     this->setNeutralNumber(false);
     for (size_t i = 0; i < this->getCountOfBuckets(); i++) this->data[i] = 0;
-    this->setMaxTolerance(-1);
+    this->setMaxTolerance(MAX_TOLERANCE_BITSET);
 }
 
 BitSet::BitSet(BitSet&& other) noexcept {
@@ -21,7 +21,7 @@ BitSet::BitSet(size_t maxNumber) {
     this->setCountOfBuckets(this->getBucketIndex(maxNumber) + 1);
     this->setMaxTolerance(maxNumber);
     this->setNeutralNumber(false);
-    this->data = new uint8_t[this->getCountOfBuckets()]{};
+    this->data = new uint8_t[this->getCountOfBuckets()] {};
 }
 
 BitSet& BitSet::operator = (const BitSet& other) {
