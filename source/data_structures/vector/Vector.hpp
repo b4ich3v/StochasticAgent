@@ -27,6 +27,7 @@ public:
 
     void push_back(const T& element);
     void push_back(T&& element);
+    void remove_at(uint32_t index);
     void pop();
 
     size_t getSize() const;
@@ -167,6 +168,19 @@ void Vector<T>::push_back(T&& element) {
     }
     this->data[this->getSize()] = std::move(element);
     this->setSize(this->getSize() + 1);
+}
+
+template<class T>
+void Vector<T>::remove_at(uint32_t index) {
+    if (index > this->getSize()) {
+        throw std::logic_error("Out of range");
+    }
+
+    for (size_t i = index; i < this->getSize() - 1; i++) {
+        this->data[i] = this->data[i + 1];
+    }
+    
+    this->setSize(this->getSize() - 1);
 }
 
 template<class T>
