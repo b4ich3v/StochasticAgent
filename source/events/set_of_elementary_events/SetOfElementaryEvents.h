@@ -16,6 +16,8 @@ public:
     SetOfElementaryEvents(const Vector<ЕlementaryEvent>& events);
 
     const Vector<ЕlementaryEvent>& getEvents() const;
+    const BitSet& getIdSet() const;
+
     void addEvent(const ЕlementaryEvent& event);
     void removeEvent(int32_t eventId);
     void clean();

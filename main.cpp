@@ -12,8 +12,11 @@ int main() {
 
     SetOfElementaryEvents set(arr);
     set.removeEvent(1);
-    std::cout << set;
+    std::cout << set << std::endl;
 
+    BitSet bitSet = set.getIdSet();
+    std::cout << bitSet;
     
+
     return 0;
 }

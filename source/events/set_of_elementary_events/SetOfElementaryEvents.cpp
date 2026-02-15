@@ -39,6 +39,10 @@ void SetOfElementaryEvents::removeEvent(int32_t eventId) {
     this->events.remove_at(this->findEventIndexById(eventId));
 }
 
+const BitSet& SetOfElementaryEvents::getIdSet() const {
+    return this->idSet;
+}
+
 const Vector<ЕlementaryEvent>& SetOfElementaryEvents::getEvents() const {
     return this->events;
 }
