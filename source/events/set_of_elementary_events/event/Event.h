@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SetOfElementaryEvents.h"
+#include "../SetOfElementaryEvents.h"
 
 
 class Event: public SetOfElementaryEvents {};
