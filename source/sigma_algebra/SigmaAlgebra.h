@@ -15,6 +15,13 @@ private:
     void addEmptyEvent();
     void addTheAddition();
     void addTheUnionOfAddition();
+
+    void buildTrivial();
+    void buildPowerSet();
+    
+    Event makeEventFromMask(size_t mask) const;
+    Event makeComplement(const Event& event) const;
+    Event makeUnion(const Event& lhs, const Event& rhs) const;
     
     void setOmegaRef(Omega* omega);
     void setSigmaAlgebraPattern(SigmaAlgebraPattern pattern);

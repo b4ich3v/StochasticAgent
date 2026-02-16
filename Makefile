@@ -7,7 +7,9 @@ SRC := \
     source/data_structures/string/String.cpp \
     source/data_structures/bitset/BitSet.cpp \
     source/events/еlementary_еvent/ЕlementaryEvent.cpp \
-    source/events/set_of_elementary_events/SetOfElementaryEvents.cpp
+    source/events/set_of_elementary_events/SetOfElementaryEvents.cpp \
+    source/sigma_algebra/SigmaAlgebra.cpp \
+    source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraFactory.cpp
 
 .PHONY: all clean run
 
