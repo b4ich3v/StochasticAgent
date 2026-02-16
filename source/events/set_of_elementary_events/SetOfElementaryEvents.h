@@ -20,6 +20,7 @@ public:
 
     void addEvent(const ЕlementaryEvent& event);
     void removeEvent(int32_t eventId);
+    bool isElementaryEventIn(const ЕlementaryEvent& event) const;
     void clean();
 
     friend std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& event);

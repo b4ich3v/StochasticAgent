@@ -13,6 +13,10 @@ void SetOfElementaryEvents::addEvent(const ЕlementaryEvent& event) {
     this->events.push_back(event);
 }
 
+bool SetOfElementaryEvents::isElementaryEventIn(const ЕlementaryEvent& event) const {
+    return this->idSet.hasNumber(event.getEventId());
+}
+
 void SetOfElementaryEvents::free() {
     while (this->events.getSize() > 0) {
         this->events.pop();
