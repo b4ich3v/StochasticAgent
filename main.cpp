@@ -1,20 +1,17 @@
-#include "source/events/set_of_elementary_events/SetOfElementaryEvents.h"
+#include "source/data_structures/bitset/BitSet.h"
 
 
 int main() {
-    ElementaryEvent e1("Event 1");
-    ElementaryEvent e2("Event 2");
-    ElementaryEvent e3("Event 3");
-    ElementaryEvent e4("Event 4");
-
-    SetOfElementaryEvents set;
-    set.addEvent(e1);
-    set.addEvent(e2);
-    set.addEvent(e3);
-    set.addEvent(e4);
-
+    BitSet set(10);
+    
+    for (size_t i = 0; i < 4; i++) {
+        set.addNumber(i);
+    }
+    
+    set.addNumber(9);   
+    
     std::cout << set << std::endl;
-    std::cout << set.isElementaryEventIn(e1);
+    std::cout << set.getAddition() << std::endl;
 
     return 0;
 }

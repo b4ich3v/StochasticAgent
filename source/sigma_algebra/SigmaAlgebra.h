@@ -7,6 +7,7 @@
 class SigmaAlgebra {
 private:
     Omega* omega = nullptr;
+    Vector<Event> containerOfEvents;
     SigmaAlgebraPattern pattern = SigmaAlgebraPattern::NONE;
 
     void addEmptyEvent();
@@ -18,8 +19,8 @@ private:
 
 public:
     SigmaAlgebra(Omega* omega, SigmaAlgebraPattern pattern);
-    const Vector<Event> getContainerOfEvents() const;
+    const Vector<Event>& getContainerOfEvents() const;
     
     friend std::ostream& operator << (std::ostream& os, const SigmaAlgebra& sigmaAlgebra);
-    friend std::istream& operator >> (std::istream& is, SigmaAlgebra& sigmaAlgebra);
+    friend std::istream& operator >> (std::istream& is, SigmaAlgebra& sigmaAlgebra) = delete;
 };
