@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../../data_structures/bitset/BitSet.h"
 #include "../../data_structures/vector/Vector.hpp"
 #include "../еlementary_еvent/ЕlementaryEvent.h"
@@ -26,5 +28,4 @@ public:
     friend std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& event);
     friend std::istream& operator >> (std::istream& is, SetOfElementaryEvents& event);
 };
-
 

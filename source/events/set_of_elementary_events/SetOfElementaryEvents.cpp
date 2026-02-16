@@ -18,10 +18,8 @@ bool SetOfElementaryEvents::isElementaryEventIn(const ElementaryEvent& event) co
 }
 
 void SetOfElementaryEvents::free() {
-    while (this->events.getSize() > 0) {
-        this->events.pop();
-    }
-    this->idSet &= BitSet();
+    this->events = Vector<ElementaryEvent>();
+    this->idSet = BitSet();
 }
 
 void SetOfElementaryEvents::clean() {
@@ -35,12 +33,14 @@ size_t SetOfElementaryEvents::findEventIndexById(int32_t id) const {
         }
     }
 
-    return -1;
+    return this->events.getSize();
 }
 
 void SetOfElementaryEvents::removeEvent(int32_t eventId) {
+    size_t idx = this->findEventIndexById(eventId);
+    if (idx == this->events.getSize()) return;
     this->idSet.removeNumber(eventId);
-    this->events.remove_at(this->findEventIndexById(eventId));
+    this->events.remove_at(idx);
 }
 
 const BitSet& SetOfElementaryEvents::getIdSet() const {

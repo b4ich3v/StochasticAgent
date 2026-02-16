@@ -1,4 +1,5 @@
 #include "String.h"
+#include <stdexcept>
 
 String::String() {
     this->setSize(0);

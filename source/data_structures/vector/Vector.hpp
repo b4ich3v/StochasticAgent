@@ -1,4 +1,8 @@
+#pragma once
+
 #include <iostream>
+#include <stdexcept>
+#include <utility>
 
 
 template <class T>
@@ -172,7 +176,7 @@ void Vector<T>::push_back(T&& element) {
 
 template<class T>
 void Vector<T>::remove_at(size_t index) {
-    if (index > this->getSize()) {
+    if (index >= this->getSize()) {
         throw std::logic_error("Out of range");
     }
 
@@ -186,7 +190,7 @@ void Vector<T>::remove_at(size_t index) {
 template<class T>
 void Vector<T>::pop() {
     if (this->getSize() == 0) {
-        throw std::logic_error("Thera are not any elements in the vector");
+        throw std::logic_error("There are no elements in the vector");
     }
     this->setSize(this->getSize() - 1);
 }

@@ -1,5 +1,6 @@
 #include "SigmaAlgebra.h"
-#include "source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraFactory.h"
+#include "sigma_algebra_factory/SigmaAlgebraFactory.h"
+#include <stdexcept>
 
 SigmaAlgebra::SigmaAlgebra(Omega* omega, SigmaAlgebraPattern pattern) {
     this->setOmegaRef(omega);
@@ -19,6 +20,11 @@ void SigmaAlgebra::setSigmaAlgebraPattern(SigmaAlgebraPattern pattern) {
 
 const Vector<Event>& SigmaAlgebra::getContainerOfEvents() const {
     return this->containerOfEvents;
+}
+
+void SigmaAlgebra::addEmptyEvent() {
+    Event emptyEvent;
+    emptyEvent.addElementaryEvent();
 }
 
 std::ostream& operator << (std::ostream& os, const SigmaAlgebra& sigmaAlgebra) {

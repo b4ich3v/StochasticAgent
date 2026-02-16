@@ -1,5 +1,6 @@
 #include "SigmaAlgebraFactory.h"
-#include "source/sigma_algebra/SigmaAlgebra.h"
+#include "../SigmaAlgebra.h"
+#include <stdexcept>
 
 SigmaAlgebra* SigmaAlgebraFactory::create(SigmaAlgebraPattern pattern, Omega* omega) {
     switch (pattern) {

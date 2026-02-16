@@ -1,7 +1,9 @@
-#include "source/events/set_of_elementary_events/omega/Omega.h"
-#include "source/events/set_of_elementary_events/event/Event.h"
-#include "source/sigma_algebra/SigmaAlgebraPattern.h"
-#include "source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraAbstractFactory.h"
+#pragma once
+
+#include "../events/set_of_elementary_events/omega/Omega.h"
+#include "../events/set_of_elementary_events/event/Event.h"
+#include "SigmaAlgebraPattern.h"
+#include "sigma_algebra_factory/SigmaAlgebraAbstractFactory.h"
 
 
 class SigmaAlgebra {
