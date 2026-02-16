@@ -21,7 +21,7 @@ private:
     
     Event makeEventFromMask(size_t mask) const;
     Event makeComplement(const Event& event) const;
-    Event makeUnion(const Event& lhs, const Event& rhs) const;
+    Event makeUnion(const Event& left, const Event& right) const;
     
     void setOmegaRef(Omega* omega);
     void setSigmaAlgebraPattern(SigmaAlgebraPattern pattern);

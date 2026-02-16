@@ -92,9 +92,9 @@ Event SigmaAlgebra::makeComplement(const Event& event) const {
     return result;
 }
 
-Event SigmaAlgebra::makeUnion(const Event& lhs, const Event& rhs) const {
-    Event result = lhs;
-    const Vector<ElementaryEvent>& rightEvents = rhs.getEvents();
+Event SigmaAlgebra::makeUnion(const Event& left, const Event& right) const {
+    Event result = left;
+    const Vector<ElementaryEvent>& rightEvents = right.getEvents();
     for (size_t i = 0; i < rightEvents.getSize(); i++) {
         result.addElementaryEvent(rightEvents[i]);
     }
