@@ -7,7 +7,7 @@ SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& even
     }
 }
 
-void SetOfElementaryEvents::addEvent(const ElementaryEvent& event) {
+void SetOfElementaryEvents::addElementaryEvent(const ElementaryEvent& event) {
     if (this->idSet.hasNumber(event.getEventId())) return;
     this->idSet.addNumber(event.getEventId());
     this->events.push_back(event);
@@ -70,7 +70,7 @@ std::istream& operator >> (std::istream& is, SetOfElementaryEvents& setOfElement
     for (size_t i = 0; i < countOfEvents; i++) {
         is >> currentDescription;
         ElementaryEvent currentEvent = ElementaryEvent(currentDescription);
-        setOfElementaryEvents.addEvent(currentEvent);
+        setOfElementaryEvents.addElementaryEvent(currentEvent);
     }
 
     return is;

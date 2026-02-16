@@ -18,7 +18,7 @@ public:
     const Vector<ElementaryEvent>& getEvents() const;
     const BitSet& getIdSet() const;
 
-    void addEvent(const ElementaryEvent& event);
+    void addElementaryEvent(const ElementaryEvent& event);
     void removeEvent(int32_t eventId);
     bool isElementaryEventIn(const ElementaryEvent& event) const;
     void clean();
