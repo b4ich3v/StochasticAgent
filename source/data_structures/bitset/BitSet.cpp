@@ -1,11 +1,12 @@
 #include "BitSet.h"
 #include "../../Constants.h"
+#include <stdexcept>
 
 BitSet::BitSet() {
-    this->setCountOfBuckets(8);
-    this->data = new uint8_t[this->getCountOfBuckets()];
+    size_t buckets = this->getBucketIndex(MAX_TOLERANCE_BITSET) + 1;
+    this->setCountOfBuckets(buckets);
+    this->data = new uint8_t[this->getCountOfBuckets()] {};
     this->setNeutralNumber(false);
-    for (size_t i = 0; i < this->getCountOfBuckets(); i++) this->data[i] = 0;
     this->setMaxTolerance(MAX_TOLERANCE_BITSET);
 }
 
@@ -124,15 +125,17 @@ void BitSet::addNumber(int32_t number) {
         this->setNeutralNumber(true);
         return;
     }
-    else if ((this->getTolerance() != -1 && this->getTolerance() < number) || number < 0)  {
+    if (number < 0 || (this->getTolerance() != -1 && this->getTolerance() < number)) {
         throw std::logic_error("The number is over the tolerance or it is negative");
-    } else if (this->getTolerance() == -1 && this->getBucketIndex(number) >= this->getCountOfBuckets()) {
-        this->resize(this->getBucketIndex(number) + 1);
+    }
+
+    size_t bucketIndex = this->getBucketIndex(number);
+    if (bucketIndex >= this->getCountOfBuckets()) {
+        this->resize(bucketIndex + 1);
     }
 
     if (this->hasNumber(number)) return;
     size_t indexInBucket = this->getIndexInCurrentBucket(number);
-    size_t bucketIndex = this->getBucketIndex(number);
     this->data[bucketIndex] |= (1 << indexInBucket);
 }
 
@@ -149,11 +152,21 @@ void BitSet::removeNumber(int32_t number) {
 }
 
 BitSet& BitSet::operator &= (const BitSet& other) {
-    BitSet result;
-    result.setNeutralNumber(this->neutralNumber && other.neutralNumber);
-    size_t countOfBucketsOther = other.getCountOfBuckets();
+    size_t commonBuckets = std::min(other.getCountOfBuckets(), this->getCountOfBuckets());
+    int32_t tolerance = (this->getTolerance() == -1) ? other.getTolerance() :
+                  (other.getTolerance() == -1 ? this->getTolerance() : std::min(this->getTolerance(), other.getTolerance()));
 
-    for (size_t i = 0; i < std::min(countOfBucketsOther, this->getCountOfBuckets()) * 8; i++) {
+    BitSet result;
+    result.free();
+    result.setCountOfBuckets(commonBuckets);
+    result.data = new uint8_t[commonBuckets] {};
+    result.setMaxTolerance(tolerance);
+    result.setNeutralNumber(this->neutralNumber && other.neutralNumber);
+
+    size_t limit = commonBuckets * COUNT_OF_ELEMENTS_IN_ONE_BUCKET;
+    if (tolerance != -1 && (size_t)(tolerance + 1) < limit) limit = (size_t)(tolerance + 1);
+
+    for (size_t i = 0; i < limit; i++) {
         if (this->hasNumber((int32_t)i) && other.hasNumber((int32_t)i)) {
             result.addNumber((int32_t)i);
         }
@@ -164,11 +177,21 @@ BitSet& BitSet::operator &= (const BitSet& other) {
 }
 
 BitSet& BitSet::operator |= (const BitSet& other) {
-    BitSet result = *this;
+    size_t targetBuckets = std::max(other.getCountOfBuckets(), this->getCountOfBuckets());
+    int32_t tol = (this->getTolerance() == -1 || other.getTolerance() == -1) ? -1 : std::max(this->getTolerance(), other.getTolerance());
+
+    BitSet result;
+    result.free();
+    result.setCountOfBuckets(targetBuckets);
+    result.data = new uint8_t[targetBuckets] {};
+    result.setMaxTolerance(tol);
     result.setNeutralNumber(this->neutralNumber || other.neutralNumber);
 
-    for (size_t i = 0; i < other.getCountOfBuckets() * 8; i++) {
-        if (other.hasNumber((int32_t)i)) {
+    size_t limit = targetBuckets * COUNT_OF_ELEMENTS_IN_ONE_BUCKET;
+    if (tol != -1 && (size_t)(tol + 1) < limit) limit = (size_t)(tol + 1);
+
+    for (size_t i = 0; i < limit; i++) {
+        if (this->hasNumber((int32_t)i) || other.hasNumber((int32_t)i)) {
             result.addNumber((int32_t)i);
         }
     }
@@ -178,10 +201,20 @@ BitSet& BitSet::operator |= (const BitSet& other) {
 }
 
 BitSet& BitSet::operator %= (const BitSet& other) {
+    size_t targetBuckets = this->getCountOfBuckets();
+    int32_t tolerance = this->getTolerance();
+
     BitSet result;
+    result.free();
+    result.setCountOfBuckets(targetBuckets);
+    result.data = new uint8_t[targetBuckets] {};
+    result.setMaxTolerance(tolerance);
     result.setNeutralNumber(this->neutralNumber && !other.neutralNumber);
 
-    for (size_t i = 0; i < this->getCountOfBuckets() * 8; i++) {
+    size_t limit = targetBuckets * COUNT_OF_ELEMENTS_IN_ONE_BUCKET;
+    if (tolerance != -1 && (size_t)(tolerance + 1) < limit) limit = (size_t)(tolerance + 1);
+
+    for (size_t i = 0; i < limit; i++) {
         if (this->hasNumber((int32_t)i) && !other.hasNumber((int32_t)i)) {
             result.addNumber((int32_t)i);
         }
@@ -256,5 +289,27 @@ BitSet operator & (const BitSet& bitSet1, const BitSet& bitSet2) {
 BitSet operator | (const BitSet& bitSet1, const BitSet& bitSet2) {
     BitSet result = bitSet1;
     result |= bitSet2;
+    return result;
+}
+
+BitSet BitSet::getAddition() const {
+    if (this->getTolerance() == -1) {
+        throw std::logic_error("Addition is undefined for unbounded BitSet");
+    }
+
+    size_t targetBuckets = this->getBucketIndex(this->getTolerance()) + 1;
+    BitSet result;
+    result.free();
+    result.setCountOfBuckets(targetBuckets);
+    result.data = new uint8_t[targetBuckets] {};
+    result.setMaxTolerance(this->getTolerance());
+    result.setNeutralNumber(false);
+
+    for (size_t i = 0; i < (size_t)this->getTolerance(); i++) {
+        if (!this->hasNumber((int32_t)i)) {
+            result.addNumber((int32_t)i);
+        }
+    }
+
     return result;
 }

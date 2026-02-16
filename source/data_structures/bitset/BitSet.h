@@ -36,6 +36,7 @@ public:
     bool hasNumber(int32_t number) const;
     size_t getCountOfBuckets() const;
     int32_t getTolerance() const;
+    BitSet getAddition() const;
 
     BitSet& operator &= (const BitSet& other);
     BitSet& operator |= (const BitSet& other);
