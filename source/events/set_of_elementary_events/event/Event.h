@@ -3,4 +3,9 @@
 #include "../SetOfElementaryEvents.h"
 
 
-class Event: public SetOfElementaryEvents {};
+class Event: public SetOfElementaryEvents {
+public:
+    Event() = default;
+    Event(const Vector<ElementaryEvent>& elementaryEvents)
+        : SetOfElementaryEvents(elementaryEvents) {}
+};

@@ -15,7 +15,7 @@ private:
 
 public:
     SetOfElementaryEvents() = default;
-    SetOfElementaryEvents(const Vector<ElementaryEvent>& events);
+    SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents);
 
     const Vector<ElementaryEvent>& getEvents() const;
     const BitSet& getIdSet() const;

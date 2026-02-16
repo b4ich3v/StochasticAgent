@@ -1,6 +1,6 @@
 #include "SetOfElementaryEvents.h"
 
-SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& events): events(events) {
+SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents): events(elementaryEvents) {
     for (size_t i = 0; i < this->events.getSize(); i++) {
         uint32_t currentId = this->events[i].getEventId();
         this->idSet.addNumber(currentId);

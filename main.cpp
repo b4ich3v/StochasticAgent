@@ -1,17 +1,22 @@
-#include "source/data_structures/bitset/BitSet.h"
+#include "source/sigma_algebra/SigmaAlgebra.h"
 
 
 int main() {
-    BitSet set(10);
-    
-    for (size_t i = 0; i < 4; i++) {
-        set.addNumber(i);
-    }
-    
-    set.addNumber(9);   
-    
-    std::cout << set << std::endl;
-    std::cout << set.getAddition() << std::endl;
+    ElementaryEvent e1("Event1");
+    ElementaryEvent e2("Event2");
+    ElementaryEvent e3("Event3");
+    ElementaryEvent e4("Event4");
+    ElementaryEvent e5("Event5");
+    Vector<ElementaryEvent> elementaryEvents;
+    elementaryEvents.push_back(e1);
+    elementaryEvents.push_back(e2);
+    elementaryEvents.push_back(e3);
+    elementaryEvents.push_back(e4);
+    elementaryEvents.push_back(e5);
+
+    Omega omega(elementaryEvents);
+    std::cout << omega << std::endl;
+
 
     return 0;
 }
