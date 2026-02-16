@@ -2,6 +2,9 @@
 
 #include "../SigmaAlgebraPattern.h"
 
+class SigmaAlgebra;
+class Omega;
+
 
 class SigmaAlgebraAbstractFactory {
 public:
