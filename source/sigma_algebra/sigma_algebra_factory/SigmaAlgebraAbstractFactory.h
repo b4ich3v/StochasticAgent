@@ -3,6 +3,6 @@
 
 class SigmaAlgebraAbstractFactory {
 public:
-    virtual void create(SigmaAlgebraPattern pattern) = 0;
+    virtual SigmaAlgebra* create(SigmaAlgebraPattern pattern, Omega* omega) = 0;
     virtual ~SigmaAlgebraAbstractFactory() = default;
 };

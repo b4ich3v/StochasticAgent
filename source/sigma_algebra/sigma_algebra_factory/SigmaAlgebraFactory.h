@@ -3,5 +3,5 @@
 
 class SigmaAlgebraFactory: public SigmaAlgebraAbstractFactory {
 public:
-    void create(SigmaAlgebraPattern pattern) override;
+    SigmaAlgebra* create(SigmaAlgebraPattern pattern, Omega* omega) override;
 };
