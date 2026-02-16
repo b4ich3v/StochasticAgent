@@ -2,10 +2,10 @@
 
 
 int main() {
-    ЕlementaryEvent e1("Event 1");
-    ЕlementaryEvent e2("Event 2");
-    ЕlementaryEvent e3("Event 3");
-    ЕlementaryEvent e4("Event 4");
+    ElementaryEvent e1("Event 1");
+    ElementaryEvent e2("Event 2");
+    ElementaryEvent e3("Event 3");
+    ElementaryEvent e4("Event 4");
 
     SetOfElementaryEvents set;
     set.addEvent(e1);

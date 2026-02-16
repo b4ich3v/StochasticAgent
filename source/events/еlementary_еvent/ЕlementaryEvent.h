@@ -1,6 +1,6 @@
 #include "../../data_structures/string/String.h"
 
-class ЕlementaryEvent {
+class ElementaryEvent {
 private:
     String eventDescription;
     int32_t realId = 0;
@@ -10,13 +10,13 @@ private:
     void setEventDescription(const String& eventDescription);
 
 public:
-    ЕlementaryEvent() = default;
-    ЕlementaryEvent(const String& eventDescription);
-    ЕlementaryEvent(const char* eventDescription);
+    ElementaryEvent() = default;
+    ElementaryEvent(const String& eventDescription);
+    ElementaryEvent(const char* eventDescription);
 
     const String& getEventDescriptionn() const;
     int32_t getEventId() const;
 
-    friend std::ostream& operator << (std::ostream& os, const ЕlementaryEvent& event);
-    friend std::istream& operator >> (std::istream& is, ЕlementaryEvent& event);
+    friend std::ostream& operator << (std::ostream& os, const ElementaryEvent& event);
+    friend std::istream& operator >> (std::istream& is, ElementaryEvent& event);
 };

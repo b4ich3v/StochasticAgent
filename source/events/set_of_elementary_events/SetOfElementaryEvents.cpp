@@ -1,19 +1,19 @@
 #include "SetOfElementaryEvents.h"
 
-SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ЕlementaryEvent>& events): events(events) {
+SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& events): events(events) {
     for (size_t i = 0; i < this->events.getSize(); i++) {
         uint32_t currentId = this->events[i].getEventId();
         this->idSet.addNumber(currentId);
     }
 }
 
-void SetOfElementaryEvents::addEvent(const ЕlementaryEvent& event) {
+void SetOfElementaryEvents::addEvent(const ElementaryEvent& event) {
     if (this->idSet.hasNumber(event.getEventId())) return;
     this->idSet.addNumber(event.getEventId());
     this->events.push_back(event);
 }
 
-bool SetOfElementaryEvents::isElementaryEventIn(const ЕlementaryEvent& event) const {
+bool SetOfElementaryEvents::isElementaryEventIn(const ElementaryEvent& event) const {
     return this->idSet.hasNumber(event.getEventId());
 }
 
@@ -47,7 +47,7 @@ const BitSet& SetOfElementaryEvents::getIdSet() const {
     return this->idSet;
 }
 
-const Vector<ЕlementaryEvent>& SetOfElementaryEvents::getEvents() const {
+const Vector<ElementaryEvent>& SetOfElementaryEvents::getEvents() const {
     return this->events;
 }
 
@@ -69,7 +69,7 @@ std::istream& operator >> (std::istream& is, SetOfElementaryEvents& setOfElement
 
     for (size_t i = 0; i < countOfEvents; i++) {
         is >> currentDescription;
-        ЕlementaryEvent currentEvent = ЕlementaryEvent(currentDescription);
+        ElementaryEvent currentEvent = ElementaryEvent(currentDescription);
         setOfElementaryEvents.addEvent(currentEvent);
     }
 

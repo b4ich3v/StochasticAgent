@@ -1,42 +1,42 @@
 #include "ЕlementaryEvent.h"
 
-int32_t ЕlementaryEvent::idMask = 0;
+int32_t ElementaryEvent::idMask = 0;
 
-ЕlementaryEvent::ЕlementaryEvent(const char* eventDescription) {
+ElementaryEvent::ElementaryEvent(const char* eventDescription) {
     this->setEventDescription(String(eventDescription));
     this->setId();
 }
 
-ЕlementaryEvent::ЕlementaryEvent(const String& eventDescription) {
+ElementaryEvent::ElementaryEvent(const String& eventDescription) {
     this->setEventDescription(eventDescription);
     this->setId();
 }
 
-void ЕlementaryEvent::setId() {
+void ElementaryEvent::setId() {
     this->realId = this->idMask;
     this->idMask += 1;
 }
 
-void ЕlementaryEvent::setEventDescription(const String& eventDescription) {
+void ElementaryEvent::setEventDescription(const String& eventDescription) {
     this->eventDescription = eventDescription;
 }
 
-int32_t ЕlementaryEvent::getEventId() const {
+int32_t ElementaryEvent::getEventId() const {
     return this->realId;
 }
 
-const String &ЕlementaryEvent::getEventDescriptionn() const {
+const String &ElementaryEvent::getEventDescriptionn() const {
     return this->eventDescription;
 }
 
-std::istream& operator >> (std::istream& is, ЕlementaryEvent& event) {
+std::istream& operator >> (std::istream& is, ElementaryEvent& event) {
     String str;
     is >> str;
-    event = ЕlementaryEvent(str);
+    event = ElementaryEvent(str);
     return is;
 }
 
-std::ostream& operator << (std::ostream& os, const ЕlementaryEvent& event) {
+std::ostream& operator << (std::ostream& os, const ElementaryEvent& event) {
     os << "{ [ Event id: " << event.getEventId() << " ], ";
     os << "[ Event description: " << event.getEventDescriptionn() << " ] }";
     return os;

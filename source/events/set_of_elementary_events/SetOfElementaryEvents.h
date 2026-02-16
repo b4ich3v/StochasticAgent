@@ -5,7 +5,7 @@
 
 class SetOfElementaryEvents {
 private:
-    Vector<ЕlementaryEvent> events;
+    Vector<ElementaryEvent> events;
     BitSet idSet;
 
     void free();
@@ -13,14 +13,14 @@ private:
 
 public:
     SetOfElementaryEvents() = default;
-    SetOfElementaryEvents(const Vector<ЕlementaryEvent>& events);
+    SetOfElementaryEvents(const Vector<ElementaryEvent>& events);
 
-    const Vector<ЕlementaryEvent>& getEvents() const;
+    const Vector<ElementaryEvent>& getEvents() const;
     const BitSet& getIdSet() const;
 
-    void addEvent(const ЕlementaryEvent& event);
+    void addEvent(const ElementaryEvent& event);
     void removeEvent(int32_t eventId);
-    bool isElementaryEventIn(const ЕlementaryEvent& event) const;
+    bool isElementaryEventIn(const ElementaryEvent& event) const;
     void clean();
 
     friend std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& event);
