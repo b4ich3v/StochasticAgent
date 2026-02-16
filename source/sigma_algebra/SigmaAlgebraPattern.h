@@ -1,4 +1,5 @@
 enum class SigmaAlgebraPattern {
-    POWER_SET = 1 << 0,
-    TRIVIAL = 1 << 1
+    NONE = 1 << 0,
+    POWER_SET = 1 << 1,
+    TRIVIAL = 1 << 2
 };
