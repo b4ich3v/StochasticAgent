@@ -2,6 +2,11 @@
 
 int32_t ElementaryEvent::idMask = 0;
 
+ElementaryEvent::ElementaryEvent() {
+    this->realId = -1;
+    this->setEventDescription("Empty elementary event");
+}
+
 ElementaryEvent::ElementaryEvent(const char* eventDescription) {
     this->setEventDescription(String(eventDescription));
     this->setId();

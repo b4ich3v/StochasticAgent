@@ -12,7 +12,7 @@ private:
     void setEventDescription(const String& eventDescription);
 
 public:
-    ElementaryEvent() = default;
+    ElementaryEvent();
     ElementaryEvent(const String& eventDescription);
     ElementaryEvent(const char* eventDescription);
 
