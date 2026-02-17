@@ -7,9 +7,9 @@ SigmaAlgebra::SigmaAlgebra(Omega* omega, SigmaAlgebraPattern pattern) {
     this->setSigmaAlgebraPattern(pattern);
 
     switch (pattern) {
-    case SigmaAlgebraPattern::TRIVIAL: buildTrivial(); break;
-    case SigmaAlgebraPattern::POWER_SET: buildPowerSet(); break;
-    default: throw std::logic_error("Unsupported sigma-algebra pattern");
+        case SigmaAlgebraPattern::TRIVIAL: this->buildTrivial(); break;
+        case SigmaAlgebraPattern::POWER_SET: this->buildPowerSet(); break;
+        default: throw std::logic_error("Unsupported sigma-algebra pattern");
     }
 }
 
@@ -51,10 +51,24 @@ void SigmaAlgebra::addTheUnionOfAddition() {
     }
 }
 
+void SigmaAlgebra::addOmega() {
+    Event event;
+    ElementaryEvent elementaryEvent = this->omega->getElementaryEvents()[0];
+    size_t countOfElementaryEvents = this->omega->getElementaryEvents().getSize();
+    Vector<ElementaryEvent> elementaryEvents = this->omega->getElementaryEvents();
+
+    for (size_t i = 1; i < countOfElementaryEvents; i++) {
+        elementaryEvent |= this->omega->getElementaryEvents()[i];
+    }
+    
+    event.addElementaryEvent(elementaryEvent);
+    this->containerOfEvents.push_back(event);
+}
+
 void SigmaAlgebra::buildTrivial() {
     this->containerOfEvents = Vector<Event>();
-    addEmptyEvent();
-    addTheAddition();
+    this->addEmptyEvent();
+    this->addOmega();
 }
 
 void SigmaAlgebra::buildPowerSet() {
@@ -64,7 +78,7 @@ void SigmaAlgebra::buildPowerSet() {
         throw std::logic_error("Omega is too large to construct power set explicitly (n > 20)");
     }
 
-    size_t total = static_cast<size_t>(1) << n;
+    size_t total = 1 << n;
     for (size_t mask = 0; mask < total; mask++) {
         this->containerOfEvents.push_back(makeEventFromMask(mask));
     }
@@ -73,11 +87,13 @@ void SigmaAlgebra::buildPowerSet() {
 Event SigmaAlgebra::makeEventFromMask(size_t mask) const {
     Event event;
     const Vector<ElementaryEvent>& omegaEvents = this->omega->getElementaryEvents();
+
     for (size_t i = 0; i < omegaEvents.getSize(); i++) {
-        if (mask & (static_cast<size_t>(1) << i)) {
+        if (mask & (1 << i)) {
             event.addElementaryEvent(omegaEvents[i]);
         }
     }
+
     return event;
 }
 
@@ -94,15 +110,14 @@ Event SigmaAlgebra::makeComplement(const Event& event) const {
 
 Event SigmaAlgebra::makeUnion(const Event& left, const Event& right) const {
     Event result = left;
-    const Vector<ElementaryEvent>& rightEvents = right.getElementaryEvents();
-    for (size_t i = 0; i < rightEvents.getSize(); i++) {
-        result.addElementaryEvent(rightEvents[i]);
-    }
+    result |= right;
+
     return result;
 }
 
 std::ostream& operator << (std::ostream& os, const SigmaAlgebra& sigmaAlgebra) {
     for (size_t i = 0; i < sigmaAlgebra.getContainerOfEvents().getSize(); i++) {
+        std::cout << "da" << std::endl;
         os << sigmaAlgebra.getContainerOfEvents()[i];
     }
     

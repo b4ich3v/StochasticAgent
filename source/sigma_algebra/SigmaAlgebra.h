@@ -15,6 +15,7 @@ private:
     void addEmptyEvent();
     void addTheAddition();
     void addTheUnionOfAddition();
+    void addOmega();
 
     void buildTrivial();
     void buildPowerSet();
