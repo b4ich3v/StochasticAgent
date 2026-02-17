@@ -77,7 +77,7 @@ SetOfElementaryEvents operator | (const SetOfElementaryEvents& left, const SetOf
 
 std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& setOfElementaryEvents) {
     if (setOfElementaryEvents.getElementaryEvents().getSize() == 0) {
-        os << "{}" << std::endl;
+        os << "{ [ Event id: -1 ], [ Event description: Empty event ] }" << std::endl;
         return os;
     }
 
