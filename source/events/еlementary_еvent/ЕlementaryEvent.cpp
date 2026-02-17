@@ -34,6 +34,17 @@ const String &ElementaryEvent::getEventDescriptionn() const {
     return this->eventDescription;
 }
 
+ElementaryEvent& ElementaryEvent::operator |= (const ElementaryEvent& other) {
+    *this = ElementaryEvent(this->getEventDescriptionn() + String(" | ") + other.getEventDescriptionn());
+    return *this;
+}
+
+ElementaryEvent operator | (const ElementaryEvent& left, const ElementaryEvent& right) {
+    ElementaryEvent result = left;
+    result |= right;
+    return result;
+}
+
 std::istream& operator >> (std::istream& is, ElementaryEvent& event) {
     String str;
     is >> str;

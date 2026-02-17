@@ -15,6 +15,7 @@ public:
     ElementaryEvent();
     ElementaryEvent(const String& eventDescription);
     ElementaryEvent(const char* eventDescription);
+    ElementaryEvent& operator |= (const ElementaryEvent& other);
 
     const String& getEventDescriptionn() const;
     int32_t getEventId() const;
@@ -22,3 +23,5 @@ public:
     friend std::ostream& operator << (std::ostream& os, const ElementaryEvent& event);
     friend std::istream& operator >> (std::istream& is, ElementaryEvent& event);
 };
+
+ElementaryEvent operator | (const ElementaryEvent& left, const ElementaryEvent& right);
