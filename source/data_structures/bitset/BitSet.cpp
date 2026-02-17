@@ -305,7 +305,7 @@ BitSet BitSet::getAddition() const {
     result.setMaxTolerance(this->getTolerance());
     result.setNeutralNumber(false);
 
-    for (size_t i = 0; i < (size_t)this->getTolerance(); i++) {
+    for (size_t i = 0; i <= (size_t)this->getTolerance(); i++) {
         if (!this->hasNumber((int32_t)i)) {
             result.addNumber((int32_t)i);
         }

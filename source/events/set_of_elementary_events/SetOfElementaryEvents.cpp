@@ -33,8 +33,6 @@ void SetOfElementaryEvents::clean() {
 void SetOfElementaryEvents::resetToNeutral() {
     this->elementaryEvents = Vector<ElementaryEvent>();
     this->idSet = BitSet();
-    this->idSet.addNumber(-1);
-    this->elementaryEvents.push_back(ElementaryEvent());
 }
 
 size_t SetOfElementaryEvents::findEventIndexById(int32_t id) const {
@@ -78,6 +76,11 @@ SetOfElementaryEvents operator | (const SetOfElementaryEvents& left, const SetOf
 }
 
 std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& setOfElementaryEvents) {
+    if (setOfElementaryEvents.getElementaryEvents().getSize() == 0) {
+        os << "{}" << std::endl;
+        return os;
+    }
+
     for (size_t i = 0; i < setOfElementaryEvents.getElementaryEvents().getSize(); i++) {
         const auto& current = setOfElementaryEvents.getElementaryEvents()[i];
         if (setOfElementaryEvents.idSet.hasNumber(current.getEventId())) {

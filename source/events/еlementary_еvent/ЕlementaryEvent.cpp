@@ -3,7 +3,7 @@
 int32_t ElementaryEvent::idMask = 0;
 
 ElementaryEvent::ElementaryEvent() {
-    this->realId = -1;
+    this->setId();
     this->setEventDescription("Empty elementary event");
 }
 

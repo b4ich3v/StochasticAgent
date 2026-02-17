@@ -53,15 +53,10 @@ void SigmaAlgebra::addTheUnionOfAddition() {
 
 void SigmaAlgebra::addOmega() {
     Event event;
-    ElementaryEvent elementaryEvent = this->omega->getElementaryEvents()[0];
-    size_t countOfElementaryEvents = this->omega->getElementaryEvents().getSize();
-    Vector<ElementaryEvent> elementaryEvents = this->omega->getElementaryEvents();
-
-    for (size_t i = 1; i < countOfElementaryEvents; i++) {
-        elementaryEvent |= this->omega->getElementaryEvents()[i];
+    const Vector<ElementaryEvent>& elementaryEvents = this->omega->getElementaryEvents();
+    for (size_t i = 0; i < elementaryEvents.getSize(); i++) {
+        event.addElementaryEvent(elementaryEvents[i]);
     }
-    
-    event.addElementaryEvent(elementaryEvent);
     this->containerOfEvents.push_back(event);
 }
 
@@ -117,7 +112,6 @@ Event SigmaAlgebra::makeUnion(const Event& left, const Event& right) const {
 
 std::ostream& operator << (std::ostream& os, const SigmaAlgebra& sigmaAlgebra) {
     for (size_t i = 0; i < sigmaAlgebra.getContainerOfEvents().getSize(); i++) {
-        std::cout << "da" << std::endl;
         os << sigmaAlgebra.getContainerOfEvents()[i];
     }
     
