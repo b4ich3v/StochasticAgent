@@ -5,10 +5,16 @@ SetOfElementaryEvents::SetOfElementaryEvents() {
     this->events.push_back(ElementaryEvent());
 }
 
-SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents): events(elementaryEvents) {
-    for (size_t i = 0; i < this->events.getSize(); i++) {
-        uint32_t currentId = this->events[i].getEventId();
-        this->idSet.addNumber(currentId);
+SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents) {
+    this->events = Vector<ElementaryEvent>();
+
+    for (size_t i = 0; i < elementaryEvents.getSize(); i++) {
+        int32_t currentId = elementaryEvents[i].getEventId();
+
+        if (!this->idSet.hasNumber(currentId)) {
+            this->events.push_back(elementaryEvents[i]);
+            this->idSet.addNumber(currentId);
+        }
     }
 }
 
