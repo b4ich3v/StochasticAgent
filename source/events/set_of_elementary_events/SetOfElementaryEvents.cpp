@@ -77,17 +77,20 @@ SetOfElementaryEvents operator | (const SetOfElementaryEvents& left, const SetOf
 
 std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& setOfElementaryEvents) {
     if (setOfElementaryEvents.getElementaryEvents().getSize() == 0) {
-        os << "{ [ Event id: -1 ], [ Event description: Empty event ] }" << std::endl;
+        os << "{ \n" << "  " << "{ [ Event id: -1 ], [ Event description: Empty event ] }" << "\n}\n";
         return os;
     }
+
+    os << "{ \n";
 
     for (size_t i = 0; i < setOfElementaryEvents.getElementaryEvents().getSize(); i++) {
         const auto& current = setOfElementaryEvents.getElementaryEvents()[i];
         if (setOfElementaryEvents.idSet.hasNumber(current.getEventId())) {
-            os << current << std::endl;
+            os << "  " << current << std::endl;
         }
     }
 
+    os << "}";
     return os;
 }
 
