@@ -1,5 +1,10 @@
 #include "SetOfElementaryEvents.h"
 
+SetOfElementaryEvents::SetOfElementaryEvents() {
+    this->idSet.addNumber(-1);
+    this->events.push_back(ElementaryEvent());
+}
+
 SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents): events(elementaryEvents) {
     for (size_t i = 0; i < this->events.getSize(); i++) {
         uint32_t currentId = this->events[i].getEventId();
@@ -47,14 +52,14 @@ const BitSet& SetOfElementaryEvents::getIdSet() const {
     return this->idSet;
 }
 
-const Vector<ElementaryEvent>& SetOfElementaryEvents::getEvents() const {
+const Vector<ElementaryEvent>& SetOfElementaryEvents::getElementaryEvents() const {
     return this->events;
 }
 
 std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& setOfElementaryEvents) {
-    for (size_t i = 0; i < setOfElementaryEvents.getEvents().getSize(); i++) {
-        if (setOfElementaryEvents.idSet.hasNumber(setOfElementaryEvents.getEvents()[i].getEventId())) {
-            os << setOfElementaryEvents.getEvents()[i] << std::endl;
+    for (size_t i = 0; i < setOfElementaryEvents.getElementaryEvents().getSize(); i++) {
+        if (setOfElementaryEvents.idSet.hasNumber(setOfElementaryEvents.getElementaryEvents()[i].getEventId())) {
+            os << setOfElementaryEvents.getElementaryEvents()[i] << std::endl;
         }
     }
 

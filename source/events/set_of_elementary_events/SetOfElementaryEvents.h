@@ -14,10 +14,10 @@ private:
     size_t findEventIndexById(int32_t id) const;
 
 public:
-    SetOfElementaryEvents() = default;
+    SetOfElementaryEvents();
     SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents);
 
-    const Vector<ElementaryEvent>& getEvents() const;
+    const Vector<ElementaryEvent>& getElementaryEvents() const;
     const BitSet& getIdSet() const;
 
     void addElementaryEvent(const ElementaryEvent& event);
