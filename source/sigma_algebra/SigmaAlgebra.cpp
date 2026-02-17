@@ -59,7 +59,7 @@ void SigmaAlgebra::buildTrivial() {
 
 void SigmaAlgebra::buildPowerSet() {
     this->containerOfEvents = Vector<Event>();
-    const size_t n = this->omega->getEvents().getSize();
+    const size_t n = this->omega->getElementaryEvents().getSize();
     if (n > 20) {
         throw std::logic_error("Omega is too large to construct power set explicitly (n > 20)");
     }
@@ -72,7 +72,7 @@ void SigmaAlgebra::buildPowerSet() {
 
 Event SigmaAlgebra::makeEventFromMask(size_t mask) const {
     Event event;
-    const Vector<ElementaryEvent>& omegaEvents = this->omega->getEvents();
+    const Vector<ElementaryEvent>& omegaEvents = this->omega->getElementaryEvents();
     for (size_t i = 0; i < omegaEvents.getSize(); i++) {
         if (mask & (static_cast<size_t>(1) << i)) {
             event.addElementaryEvent(omegaEvents[i]);
@@ -83,7 +83,7 @@ Event SigmaAlgebra::makeEventFromMask(size_t mask) const {
 
 Event SigmaAlgebra::makeComplement(const Event& event) const {
     Event result;
-    const Vector<ElementaryEvent>& omegaEvents = this->omega->getEvents();
+    const Vector<ElementaryEvent>& omegaEvents = this->omega->getElementaryEvents();
     for (size_t i = 0; i < omegaEvents.getSize(); i++) {
         if (!event.getIdSet().hasNumber(omegaEvents[i].getEventId())) {
             result.addElementaryEvent(omegaEvents[i]);
@@ -94,7 +94,7 @@ Event SigmaAlgebra::makeComplement(const Event& event) const {
 
 Event SigmaAlgebra::makeUnion(const Event& left, const Event& right) const {
     Event result = left;
-    const Vector<ElementaryEvent>& rightEvents = right.getEvents();
+    const Vector<ElementaryEvent>& rightEvents = right.getElementaryEvents();
     for (size_t i = 0; i < rightEvents.getSize(); i++) {
         result.addElementaryEvent(rightEvents[i]);
     }

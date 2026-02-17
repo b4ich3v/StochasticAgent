@@ -3,20 +3,21 @@
 
 
 int main() {
-    ElementaryEvent e1("Event1");
-    ElementaryEvent e2("Event2");
+    ElementaryEvent e1;
+    ElementaryEvent e2;
     ElementaryEvent e3("Event3");
-    Vector<ElementaryEvent> elementaryEvents;
-    elementaryEvents.push_back(e1);
-    elementaryEvents.push_back(e2);
-    elementaryEvents.push_back(e3);
-    Omega omega(elementaryEvents);
+    ElementaryEvent e4("Event4");
+    ElementaryEvent e5 = e3;
 
+    Vector<ElementaryEvent> arr;
+    arr.push_back(e1);
+    arr.push_back(e2);
+    arr.push_back(e3);
+    arr.push_back(e4);
+    arr.push_back(e5);
 
-    SigmaAlgebraAbstractFactory* sigmaFactory = new SigmaAlgebraFactory();
-    SigmaAlgebra* sigma = sigmaFactory->create(SigmaAlgebraPattern::POWER_SET, &omega);
-    Vector<Event> events = sigma->getContainerOfEvents();
-    std::cout << events;
+    SetOfElementaryEvents set(arr);
+    std::cout << set << std::endl;
 
     return 0;
 }
