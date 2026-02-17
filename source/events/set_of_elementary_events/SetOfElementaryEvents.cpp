@@ -2,17 +2,17 @@
 
 SetOfElementaryEvents::SetOfElementaryEvents() {
     this->idSet.addNumber(-1);
-    this->events.push_back(ElementaryEvent());
+    this->elementaryEvents.push_back(ElementaryEvent());
 }
 
 SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents) {
-    this->events = Vector<ElementaryEvent>();
+    this->elementaryEvents = Vector<ElementaryEvent>();
 
     for (size_t i = 0; i < elementaryEvents.getSize(); i++) {
         int32_t currentId = elementaryEvents[i].getEventId();
 
         if (!this->idSet.hasNumber(currentId)) {
-            this->events.push_back(elementaryEvents[i]);
+            this->elementaryEvents.push_back(elementaryEvents[i]);
             this->idSet.addNumber(currentId);
         }
     }
@@ -21,7 +21,7 @@ SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& elem
 void SetOfElementaryEvents::addElementaryEvent(const ElementaryEvent& event) {
     if (this->idSet.hasNumber(event.getEventId())) return;
     this->idSet.addNumber(event.getEventId());
-    this->events.push_back(event);
+    this->elementaryEvents.push_back(event);
 }
 
 bool SetOfElementaryEvents::isElementaryEventIn(const ElementaryEvent& event) const {
@@ -29,7 +29,7 @@ bool SetOfElementaryEvents::isElementaryEventIn(const ElementaryEvent& event) co
 }
 
 void SetOfElementaryEvents::free() {
-    this->events = Vector<ElementaryEvent>();
+    this->elementaryEvents = Vector<ElementaryEvent>();
     this->idSet = BitSet();
 }
 
@@ -38,20 +38,20 @@ void SetOfElementaryEvents::clean() {
 }
 
 size_t SetOfElementaryEvents::findEventIndexById(int32_t id) const {
-    for (size_t i = 0; i < this->events.getSize(); i++) {
-        if (this->events[i].getEventId() == id) {
+    for (size_t i = 0; i < this->elementaryEvents.getSize(); i++) {
+        if (this->elementaryEvents[i].getEventId() == id) {
             return i;
         }
     }
 
-    return this->events.getSize();
+    return this->elementaryEvents.getSize();
 }
 
 void SetOfElementaryEvents::removeEvent(int32_t eventId) {
     size_t idx = this->findEventIndexById(eventId);
-    if (idx == this->events.getSize()) return;
+    if (idx == this->elementaryEvents.getSize()) return;
     this->idSet.removeNumber(eventId);
-    this->events.remove_at(idx);
+    this->elementaryEvents.remove_at(idx);
 }
 
 const BitSet& SetOfElementaryEvents::getIdSet() const {
@@ -59,7 +59,7 @@ const BitSet& SetOfElementaryEvents::getIdSet() const {
 }
 
 const Vector<ElementaryEvent>& SetOfElementaryEvents::getElementaryEvents() const {
-    return this->events;
+    return this->elementaryEvents;
 }
 
 std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& setOfElementaryEvents) {

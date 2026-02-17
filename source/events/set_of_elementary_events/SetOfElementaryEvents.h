@@ -7,7 +7,7 @@
 
 class SetOfElementaryEvents {
 private:
-    Vector<ElementaryEvent> events;
+    Vector<ElementaryEvent> elementaryEvents;
     BitSet idSet;
 
     void free();
