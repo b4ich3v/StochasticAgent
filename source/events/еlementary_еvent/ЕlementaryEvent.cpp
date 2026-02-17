@@ -35,6 +35,10 @@ const String &ElementaryEvent::getEventDescriptionn() const {
 }
 
 ElementaryEvent& ElementaryEvent::operator |= (const ElementaryEvent& other) {
+    if (this->getEventId() == other.getEventId()) {
+        return *this;
+    }
+
     *this = ElementaryEvent(this->getEventDescriptionn() + String(" | ") + other.getEventDescriptionn());
     return *this;
 }

@@ -26,9 +26,10 @@ int main() {
     // delete sigma;
 
     ElementaryEvent e1("Event1");
+    ElementaryEvent e_copy = e1;
     ElementaryEvent e2("Event2");
-    e1 |= e2;
-    std::cout << e1;
+    // e1 |= e2;
+    std::cout << (e_copy | e1);
 
     return 0;
 }
