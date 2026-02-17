@@ -11,11 +11,13 @@ private:
     BitSet idSet;
 
     void free();
+    void resetToNeutral();
     size_t findEventIndexById(int32_t id) const;
 
 public:
     SetOfElementaryEvents();
     SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents);
+    SetOfElementaryEvents& operator |= (const SetOfElementaryEvents& other);
 
     const Vector<ElementaryEvent>& getElementaryEvents() const;
     const BitSet& getIdSet() const;
@@ -29,3 +31,4 @@ public:
     friend std::istream& operator >> (std::istream& is, SetOfElementaryEvents& event);
 };
 
+SetOfElementaryEvents operator | (const SetOfElementaryEvents& left, const SetOfElementaryEvents& right);

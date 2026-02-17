@@ -1,20 +1,14 @@
 #include "SetOfElementaryEvents.h"
 
 SetOfElementaryEvents::SetOfElementaryEvents() {
-    this->idSet.addNumber(-1);
-    this->elementaryEvents.push_back(ElementaryEvent());
+    this->resetToNeutral();
 }
 
 SetOfElementaryEvents::SetOfElementaryEvents(const Vector<ElementaryEvent>& elementaryEvents) {
-    this->elementaryEvents = Vector<ElementaryEvent>();
+    this->resetToNeutral();
 
     for (size_t i = 0; i < elementaryEvents.getSize(); i++) {
-        int32_t currentId = elementaryEvents[i].getEventId();
-
-        if (!this->idSet.hasNumber(currentId)) {
-            this->elementaryEvents.push_back(elementaryEvents[i]);
-            this->idSet.addNumber(currentId);
-        }
+        this->addElementaryEvent(elementaryEvents[i]);
     }
 }
 
@@ -29,12 +23,18 @@ bool SetOfElementaryEvents::isElementaryEventIn(const ElementaryEvent& event) co
 }
 
 void SetOfElementaryEvents::free() {
-    this->elementaryEvents = Vector<ElementaryEvent>();
-    this->idSet = BitSet();
+    resetToNeutral();
 }
 
 void SetOfElementaryEvents::clean() {
     free();
+}
+
+void SetOfElementaryEvents::resetToNeutral() {
+    this->elementaryEvents = Vector<ElementaryEvent>();
+    this->idSet = BitSet();
+    this->idSet.addNumber(-1);
+    this->elementaryEvents.push_back(ElementaryEvent());
 }
 
 size_t SetOfElementaryEvents::findEventIndexById(int32_t id) const {
@@ -48,10 +48,10 @@ size_t SetOfElementaryEvents::findEventIndexById(int32_t id) const {
 }
 
 void SetOfElementaryEvents::removeEvent(int32_t eventId) {
-    size_t idx = this->findEventIndexById(eventId);
-    if (idx == this->elementaryEvents.getSize()) return;
+    size_t index = this->findEventIndexById(eventId);
+    if (index == this->elementaryEvents.getSize()) return;
     this->idSet.removeNumber(eventId);
-    this->elementaryEvents.remove_at(idx);
+    this->elementaryEvents.remove_at(index);
 }
 
 const BitSet& SetOfElementaryEvents::getIdSet() const {
@@ -62,10 +62,26 @@ const Vector<ElementaryEvent>& SetOfElementaryEvents::getElementaryEvents() cons
     return this->elementaryEvents;
 }
 
+SetOfElementaryEvents& SetOfElementaryEvents::operator |= (const SetOfElementaryEvents& other) {
+    for (size_t i = 0; i < other.getElementaryEvents().getSize(); i++) {
+        addElementaryEvent(other.getElementaryEvents()[i]);
+    }
+
+    return *this;
+}
+
+SetOfElementaryEvents operator | (const SetOfElementaryEvents& left, const SetOfElementaryEvents& right) {
+    SetOfElementaryEvents result = left;
+    result |= right;
+    
+    return result;
+}
+
 std::ostream& operator << (std::ostream& os, const SetOfElementaryEvents& setOfElementaryEvents) {
     for (size_t i = 0; i < setOfElementaryEvents.getElementaryEvents().getSize(); i++) {
-        if (setOfElementaryEvents.idSet.hasNumber(setOfElementaryEvents.getElementaryEvents()[i].getEventId())) {
-            os << setOfElementaryEvents.getElementaryEvents()[i] << std::endl;
+        const auto& current = setOfElementaryEvents.getElementaryEvents()[i];
+        if (setOfElementaryEvents.idSet.hasNumber(current.getEventId())) {
+            os << current << std::endl;
         }
     }
 

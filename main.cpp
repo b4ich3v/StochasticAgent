@@ -3,18 +3,18 @@
 
 
 int main() {
-    // ElementaryEvent e1;
-    // ElementaryEvent e2;
-    // ElementaryEvent e3("Event3");
-    // ElementaryEvent e4("Event4");
-    // ElementaryEvent e5 = e3;
+    ElementaryEvent e1;
+    ElementaryEvent e2;
+    ElementaryEvent e3("Event3");
+    ElementaryEvent e4("Event4");
+    ElementaryEvent e5 = e3;
 
-    // Vector<ElementaryEvent> arr;
-    // arr.push_back(e1);
-    // arr.push_back(e2);
-    // arr.push_back(e3);
-    // arr.push_back(e4);
-    // arr.push_back(e5);
+    Vector<ElementaryEvent> arr;
+    arr.push_back(e1);
+    arr.push_back(e2);
+    arr.push_back(e3);
+    arr.push_back(e4);
+    arr.push_back(e5);
 
     // Omega omega(arr);
 
@@ -22,14 +22,19 @@ int main() {
     // SigmaAlgebra* sigma = factory->create(SigmaAlgebraPattern::POWER_SET, &omega);
     // std::cout << *sigma << std::endl;
 
+    Event event1;
+    Event event2(arr);
+    std::cout << (event1 | event2);
+
+
+
+
+
+
+
+
+
     // delete factory;
     // delete sigma;
-
-    ElementaryEvent e1("Event1");
-    ElementaryEvent e_copy = e1;
-    ElementaryEvent e2("Event2");
-    // e1 |= e2;
-    std::cout << (e_copy | e1);
-
     return 0;
 }
