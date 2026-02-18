@@ -2,7 +2,7 @@
 #include "../SigmaAlgebra.h"
 #include <stdexcept>
 
-SigmaAlgebra* SigmaAlgebraFactory::create(SigmaAlgebraPattern pattern, Omega* omega) {
+SigmaAlgebra* SigmaAlgebraFactory::create(SigmaAlgebraPattern pattern, Omega* omega) const {
     switch (pattern) {
         case SigmaAlgebraPattern::TRIVIAL: return new SigmaAlgebra(omega, SigmaAlgebraPattern::TRIVIAL);
         case SigmaAlgebraPattern::POWER_SET: return new SigmaAlgebra(omega, SigmaAlgebraPattern::POWER_SET);

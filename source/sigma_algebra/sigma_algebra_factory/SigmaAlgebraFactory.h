@@ -5,5 +5,5 @@
 
 class SigmaAlgebraFactory: public SigmaAlgebraAbstractFactory {
 public:
-    SigmaAlgebra* create(SigmaAlgebraPattern pattern, Omega* omega) override;
+    SigmaAlgebra* create(SigmaAlgebraPattern pattern, Omega* omega) const override;
 };
