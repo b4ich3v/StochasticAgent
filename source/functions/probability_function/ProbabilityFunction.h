@@ -7,6 +7,7 @@
 #include "source/data_structures/vector/Vector.hpp"
 
 typedef double (*ProbabilityFunctionFilter)(const Event& event);
+Range<double> probabilityRange();
 
 
 class ProbabilityFunction: public Function<Event, double> {
