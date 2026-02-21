@@ -1,7 +1,5 @@
 #include "Event.h"
 
-Event::Event(const Vector<ElementaryEvent>& elementaryEvents): SetOfElementaryEvents(elementaryEvents) {}
-
 bool operator == (const Event& left, const Event& right) {
     const auto& leftElements = left.getElementaryEvents();
     const auto& rightElements = right.getElementaryEvents();

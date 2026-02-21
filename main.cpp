@@ -1,5 +1,6 @@
 #include "source/sigma_algebra/SigmaAlgebra.h"
 #include "source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraFactory.h"
+#include <iostream>
 
 
 void test() {
@@ -20,4 +21,9 @@ void test() {
 
     delete factory;
     delete sigma;
+}
+
+int main() {
+    test();
+    return 0;
 }
