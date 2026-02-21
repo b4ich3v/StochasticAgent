@@ -9,3 +9,6 @@ public:
     Event(const Vector<ElementaryEvent>& elementaryEvents)
         : SetOfElementaryEvents(elementaryEvents) {}
 };
+
+bool operator == (const Event& left, const Event& right);
+bool operator != (const Event& left, const Event& right);
