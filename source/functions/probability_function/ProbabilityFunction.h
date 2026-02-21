@@ -14,8 +14,8 @@ private:
     const SigmaAlgebra* sigmaAlgebra = nullptr;
     Vector<Pair<Event, double>> probabilities;
 
-    void fillProbabilities();
-    void setSigmaAlgebraPointer();
+    void fillProbabilities(ProbabilityFunctionFilter filter);
+    void setSigmaAlgebraPointer(const SigmaAlgebra* sigmaAlgebra);
 
 public:
     ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter);
