@@ -15,7 +15,7 @@ private:
 public:
     Function(const Domain<T>& domain, const Range<U>& range);
 
-    virtual U operator () (T input) const = 0;
+    virtual U operator () (const T& input) const = 0;
     virtual Function* clone() const = 0;
     virtual ~Function() = default;
 };
