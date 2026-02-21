@@ -1,5 +1,6 @@
 #pragma once
 
+
 class Function {
 public:
     virtual double operator()(double x) const = 0;
