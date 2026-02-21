@@ -2,7 +2,7 @@
 
 #include "../../data_structures/bitset/BitSet.h"
 #include "../../data_structures/vector/Vector.hpp"
-#include "../еlementary_еvent/ЕlementaryEvent.h"
+#include "../elementary_event/ElementaryEvent.h"
 
 
 class SetOfElementaryEvents {

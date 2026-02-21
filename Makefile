@@ -7,7 +7,7 @@ SRC := \
 	main.cpp \
 	source/data_structures/string/String.cpp \
 	source/data_structures/bitset/BitSet.cpp \
-	source/events/еlementary_еvent/ЕlementaryEvent.cpp \
+	source/events/elementary_event/ElementaryEvent.cpp \
 	source/events/set_of_elementary_events/SetOfElementaryEvents.cpp \
 	source/events/set_of_elementary_events/event/Event.cpp \
 	source/sigma_algebra/SigmaAlgebra.cpp \
