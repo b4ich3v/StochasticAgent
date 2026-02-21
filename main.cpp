@@ -2,7 +2,7 @@
 #include "source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraFactory.h"
 
 
-int main() {
+void test() {
     ElementaryEvent e1("Event 1");
     ElementaryEvent e2("Event 2");
     ElementaryEvent e3("Event 3");
@@ -18,11 +18,6 @@ int main() {
     SigmaAlgebra* sigma = factory->create(SigmaAlgebraPattern::TRIVIAL, &omega);
     std::cout << *sigma << std::endl;
 
-
-
-
-
     delete factory;
     delete sigma;
-    return 0;
 }
