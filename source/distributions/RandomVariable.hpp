@@ -39,11 +39,13 @@ RandomVariable<T>::RandomVariable(Success success) {
 
 template <class T>
 void RandomVariable<T>::setSuccessRate(Success success) {
+    if (success < 0 || success > 1) throw std::logic_error("Success rate must be between 0 and 1");
     this->success = success;
 }
 
 template <class T>
 void RandomVariable<T>::setFailureRate(Failure failure) {
+    if (failure < 0 || failure > 1) throw std::logic_error("Failure rate must be between 0 and 1");
     this->failure = failure;
 }
 
