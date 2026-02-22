@@ -11,30 +11,39 @@ typedef double Failure;
 template <class T>
 class RandomVariable {
 private:
+    TypeOfRandomVariable type = TypeOfRandomVariable::NONE;
     Success success = 0.0;
     Failure failure = 0.0;
 
+    void setType(TypeOfRandomVariable type);
     void setSuccessRate(Success success);
     void setFailureRate(Failure failure);
 
 public:
-    RandomVariable(Success success);
+    RandomVariable(Success success, TypeOfRandomVariable type);
 
     Success getSuccessRate() const;
     Failure getFailureRate() const;
+    TypeOfRandomVariable getType() const;
 
     virtual double calculateProbability(T number) const = 0;
     virtual double getExpectation() const = 0;
     virtual double getVariance() const = 0;
-    virtual TypeOfRandomVariable getType() const = 0;
     virtual RandomVariable* clone() const = 0;
     virtual ~RandomVariable() = default;
 };
 
 template <class T>
-RandomVariable<T>::RandomVariable(Success success) {
+RandomVariable<T>::RandomVariable(Success success, TypeOfRandomVariable type) {
+    this->setType(type);
     this->setSuccessRate(success);
     this->setFailureRate(1 - success);
+}
+
+template <class T>
+void RandomVariable<T>::setType(TypeOfRandomVariable type) {
+    if (type == TypeOfRandomVariable::NONE) throw std::logic_error("Must be type different from None");
+    this->type = type;
 }
 
 template <class T>
