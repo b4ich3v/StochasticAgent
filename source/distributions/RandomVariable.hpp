@@ -4,16 +4,24 @@
 #include "source/distributions/TypeOfRandomVariable.h"
 #include "source/functions/probability_function/ProbabilityFunction.h"
 
+typedef double Success;
+typedef double Failure;
+
 
 template <class T>
 class RandomVariable {
 private:
-    const ProbabilityFunction* probabilityFunction = nullptr;
-    void setProbabilityFunction(const ProbabilityFunction* probabilityFunction);
+    Success success = 0.0;
+    Failure failure = 0.0;
+
+    void setSuccessRate(Success success);
+    void setFailureRate(Failure failure);
 
 public:
-    RandomVariable(const ProbabilityFunction* probabilityFunction);
-    const ProbabilityFunction* getProbabiltiyFunction() const;
+    RandomVariable(Success success);
+
+    Success getSuccessRate() const;
+    Failure getFailureRate() const;
 
     virtual double calculateProbability(T number) const = 0;
     virtual double getExpectation() const = 0;
@@ -24,18 +32,27 @@ public:
 };
 
 template <class T>
-RandomVariable<T>::RandomVariable(const ProbabilityFunction* probabilityFunction) {
-    this->setProbabilityFunction(probabilityFunction);
+RandomVariable<T>::RandomVariable(Success success) {
+    this->setSuccessRate(success);
+    this->setFailureRate(1 - success);
 }
 
 template <class T>
-void RandomVariable<T>::setProbabilityFunction(const ProbabilityFunction* probabilityFunction) {
-    if (!probabilityFunction) throw std::runtime_error("Nullptr detected");
-    this->probabilityFunction = probabilityFunction;
+void RandomVariable<T>::setSuccessRate(Success success) {
+    this->success = success;
 }
 
+template <class T>
+void RandomVariable<T>::setFailureRate(Failure failure) {
+    this->failure = failure;
+}
 
 template <class T>
-const ProbabilityFunction* RandomVariable<T>::getProbabiltiyFunction() const {
-    return this->probabilityFunction;
+Success RandomVariable<T>::getSuccessRate() const {
+    return this->success;
+}
+
+template <class T>
+Failure RandomVariable<T>::getFailureRate() const {
+    return this->failure;
 }
