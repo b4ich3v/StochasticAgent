@@ -125,12 +125,15 @@ void BitSet::addNumber(int32_t number) {
         this->setNeutralNumber(true);
         return;
     }
-    if (number < 0 || (this->getTolerance() != -1 && this->getTolerance() < number)) {
+    if (number < 0) {
         throw std::logic_error("The number is over the tolerance or it is negative");
     }
 
     size_t bucketIndex = this->getBucketIndex(number);
-    if (bucketIndex >= this->getCountOfBuckets()) {
+    if (this->getTolerance() != -1 && number > this->getTolerance()) {
+        this->resize(bucketIndex + 1);
+        this->setMaxTolerance(number);
+    } else if (bucketIndex >= this->getCountOfBuckets()) {
         this->resize(bucketIndex + 1);
     }
 
