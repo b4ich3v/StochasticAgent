@@ -154,7 +154,7 @@ void HeterogeneousContainer<T>::copyFrom(const HeterogeneousContainer& other) {
     this->capacity = other.capacity;
 
     for (size_t i = 0; i < this->size; i++) {
-        this->data[i] = new T(*other.data[i]);
+        this->data[i] = other.data[i]->clone();
     }
 }
 
