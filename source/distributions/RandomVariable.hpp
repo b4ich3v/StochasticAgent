@@ -67,3 +67,8 @@ template <class T>
 Failure RandomVariable<T>::getFailureRate() const {
     return this->failure;
 }
+
+template <class T>
+TypeOfRandomVariable RandomVariable<T>::getType() const {
+    return this->type;
+}
