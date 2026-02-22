@@ -44,7 +44,7 @@ uint32_t KSelection::generateCount() const {
 }
 
 void KSelection::validate() const {
-    if (!allowRepetition && k > n) throw std::invalid_argument("k > n is not valid");
+    if (!this->allowRepetition && this->k > this->n) throw std::invalid_argument("k > n is not valid");
 }
 
 void KSelection::setN(uint32_t n) {
