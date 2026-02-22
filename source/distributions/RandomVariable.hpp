@@ -11,7 +11,7 @@ typedef double Failure;
 template <class T>
 class RandomVariable {
 private:
-    TypeOfRandomVariable type = TypeOfRandomVariable::NONE;
+    TypeOfRandomVariable type = TypeOfRandomVariable::None;
     Success success = 0.0;
     Failure failure = 0.0;
 
@@ -42,7 +42,7 @@ RandomVariable<T>::RandomVariable(Success success, TypeOfRandomVariable type) {
 
 template <class T>
 void RandomVariable<T>::setType(TypeOfRandomVariable type) {
-    if (type == TypeOfRandomVariable::NONE) throw std::logic_error("Must be type different from None");
+    if (type == TypeOfRandomVariable::None) throw std::logic_error("Must be type different from None");
     this->type = type;
 }
 
