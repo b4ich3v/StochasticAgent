@@ -16,7 +16,7 @@ void test() {
     Omega omega(arr);
 
     SigmaAlgebraAbstractFactory* factory = new SigmaAlgebraFactory();
-    SigmaAlgebra* sigma = factory->create(SigmaAlgebraPattern::TRIVIAL, &omega);
+    SigmaAlgebra* sigma = factory->create(SigmaAlgebraPattern::Trivial, &omega);
     std::cout << *sigma << std::endl;
 
     delete factory;

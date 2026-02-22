@@ -7,8 +7,8 @@ SigmaAlgebra::SigmaAlgebra(Omega* omega, SigmaAlgebraPattern pattern) {
     this->setSigmaAlgebraPattern(pattern);
 
     switch (pattern) {
-        case SigmaAlgebraPattern::TRIVIAL: this->buildTrivial(); break;
-        case SigmaAlgebraPattern::POWER_SET: this->buildPowerSet(); break;
+        case SigmaAlgebraPattern::Trivial: this->buildTrivial(); break;
+        case SigmaAlgebraPattern::PowerSet: this->buildPowerSet(); break;
         default: throw std::logic_error("Unsupported sigma-algebra pattern");
     }
 }
@@ -19,7 +19,7 @@ void SigmaAlgebra::setOmegaRef(Omega* omega) {
 }
 
 void SigmaAlgebra::setSigmaAlgebraPattern(SigmaAlgebraPattern pattern) {
-    if (pattern == SigmaAlgebraPattern::NONE) throw std::logic_error("Not selected pattern");
+    if (pattern == SigmaAlgebraPattern::None) throw std::logic_error("Not selected pattern");
     this->pattern = pattern;
 }
 

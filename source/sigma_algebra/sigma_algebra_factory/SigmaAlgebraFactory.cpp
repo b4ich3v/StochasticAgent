@@ -4,8 +4,8 @@
 
 SigmaAlgebra* SigmaAlgebraFactory::create(SigmaAlgebraPattern pattern, Omega* omega) const {
     switch (pattern) {
-        case SigmaAlgebraPattern::TRIVIAL: return new SigmaAlgebra(omega, SigmaAlgebraPattern::TRIVIAL);
-        case SigmaAlgebraPattern::POWER_SET: return new SigmaAlgebra(omega, SigmaAlgebraPattern::POWER_SET);
+        case SigmaAlgebraPattern::Trivial: return new SigmaAlgebra(omega, SigmaAlgebraPattern::Trivial);
+        case SigmaAlgebraPattern::PowerSet: return new SigmaAlgebra(omega, SigmaAlgebraPattern::PowerSet);
         default: throw std::logic_error("Not supported sigma-algebra pattern for constructoring");
     }
 }

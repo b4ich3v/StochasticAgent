@@ -10,7 +10,7 @@ class SigmaAlgebra {
 private:
     Omega* omega = nullptr;
     Vector<Event> containerOfEvents;
-    SigmaAlgebraPattern pattern = SigmaAlgebraPattern::NONE;
+    SigmaAlgebraPattern pattern = SigmaAlgebraPattern::None;
 
     void addEmptyEvent();
     void addTheAddition();
