@@ -1,6 +1,6 @@
 #include "source/distributions/discrete_distributions/bernoulii/Bernoulli.h"
 
-Bernoulli::Bernoulli(Success success): RandomVariable(success, TypeOfRandomVariable::DISCRETE) {}
+Bernoulli::Bernoulli(Success success): RandomVariable(success, TypeOfRandomVariable::Discrete) {}
 
 double Bernoulli::calculateProbability(bool number) const {
     if (number == 1) return this->getSuccessRate();
