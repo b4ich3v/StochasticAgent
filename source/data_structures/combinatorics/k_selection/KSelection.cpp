@@ -11,11 +11,22 @@ KSelection::KSelection(KSelectionPattern buildingPattern, uint32_t n, uint32_t k
 void KSelection::applyPattern(KSelectionPattern buildingPattern) {
     this->setKSelectionPattern(buildingPattern);
     switch (buildingPattern) {
-        case KSelectionPattern::Combination: orderMatters = false; allowRepetition = false; break;
-        case KSelectionPattern::CombinationWithRepetition: orderMatters = false; allowRepetition = true; break;
-        case KSelectionPattern::Variation: orderMatters = true;  allowRepetition = false; break;
-        case KSelectionPattern::VariationWithRepetition: orderMatters = true;  allowRepetition = true; break;
-        case KSelectionPattern::Permutation: orderMatters = true;  allowRepetition = false; k = n; break;
+        case KSelectionPattern::Combination: 
+            this->orderMatters = false; 
+            this->allowRepetition = false; break;
+        case KSelectionPattern::CombinationWithRepetition: 
+            this->orderMatters = false; 
+            this->allowRepetition = true; break;
+        case KSelectionPattern::Variation: 
+            this->orderMatters = true; 
+            this->allowRepetition = false; break;
+        case KSelectionPattern::VariationWithRepetition: 
+            this->orderMatters = true; 
+            this->allowRepetition = true; break;
+        case KSelectionPattern::Permutation: 
+            this->orderMatters = true; 
+            this->allowRepetition = false; 
+            this->k = n; break;
         default: throw std::invalid_argument("Unsupported KSelectionPattern");
     }
 }
