@@ -6,6 +6,12 @@
 #include <utility>
 #include "source/data_structures/combinatorics/k_selection/KSelectionPattern.h"
 
+namespace HelperFunctions {
+    static uint32_t binomial(uint32_t n, uint32_t k);
+    static uint32_t permutation(uint32_t n, uint32_t k);
+    static uint32_t power(uint32_t n, uint32_t k);
+};
+
 
 class KSelection {
 private:
@@ -20,10 +26,6 @@ private:
     void setN(uint32_t n);
     void setK(uint32_t k);
     void setKSelectionPattern(KSelectionPattern buildingPattern);
-
-    static uint32_t binomial(uint32_t n, uint32_t k);
-    static uint32_t permutation(uint32_t n, uint32_t k);
-    static uint32_t power(uint32_t n, uint32_t k);
 
 public:
     KSelection(KSelectionPattern buildingPattern, uint32_t n, uint32_t k);

@@ -34,11 +34,11 @@ void KSelection::applyPattern(KSelectionPattern buildingPattern) {
 uint32_t KSelection::generateCount() const {
     this->validate();
     switch (this->buildingPattern) {
-        case KSelectionPattern::Combination: return binomial(this->n, this->k);
-        case KSelectionPattern::CombinationWithRepetition: return binomial(this->n + this->k - 1, this->k);
-        case KSelectionPattern::Variation: return permutation(this->n, this->k);
-        case KSelectionPattern::VariationWithRepetition: return power(this->n, this->k);
-        case KSelectionPattern::Permutation: return permutation(this->n, this->n);
+        case KSelectionPattern::Combination: return HelperFunctions::binomial(this->n, this->k);
+        case KSelectionPattern::CombinationWithRepetition: return HelperFunctions::binomial(this->n + this->k - 1, this->k);
+        case KSelectionPattern::Variation: return HelperFunctions::permutation(this->n, this->k);
+        case KSelectionPattern::VariationWithRepetition: return HelperFunctions::power(this->n, this->k);
+        case KSelectionPattern::Permutation: return HelperFunctions::permutation(this->n, this->n);
         default: throw std::logic_error("Unsupported pattern");
     }
 }
@@ -79,15 +79,15 @@ KSelectionPattern KSelection::getBuildingPattern() const {
     return this->buildingPattern;
 }
 
-uint32_t KSelection::binomial(uint32_t n, uint32_t k) {
+uint32_t HelperFunctions::binomial(uint32_t n, uint32_t k) {
     return (uint32_t)(Factoriel()(n) / (Factoriel()(n - k) * Factoriel()(k)));
 }
 
-uint32_t KSelection::permutation(uint32_t n, uint32_t k) {
+uint32_t HelperFunctions::permutation(uint32_t n, uint32_t k) {
     return (uint32_t)(Factoriel()(n) / Factoriel()(n - k));
 }
 
-uint32_t KSelection::power(uint32_t n, uint32_t k) {
+uint32_t HelperFunctions::power(uint32_t n, uint32_t k) {
     uint32_t result = 1;
     for (uint32_t i = 0; i < k; i++) {
         result *= n;
