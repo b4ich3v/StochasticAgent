@@ -94,3 +94,11 @@ uint32_t HelperFunctions::power(uint32_t n, uint32_t k) {
     }
     return result;
 }
+
+double HelperFunctions::power(double n, uint32_t k) {
+    double result = 1.0;
+    for (uint32_t i = 0; i < k; i++) {
+        result *= n;
+    }
+    return result;
+}

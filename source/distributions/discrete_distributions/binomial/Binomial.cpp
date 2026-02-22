@@ -6,12 +6,28 @@ Binomial::Binomial(uint32_t countOfExperiments, Success success): RandomVariable
 }
 
 Binomial::Binomial(const HeterogeneousContainer<RandomVariable<bool>>& countainerOfBernouliis): 
-    RandomVariable(countainerOfBernouliis[0]->getSuccessRate(), TypeOfRandomVariable::Discrete) {
+    RandomVariable(countainerOfBernouliis.getSize() > 0 ? countainerOfBernouliis[0]->getSuccessRate() : 0.0, TypeOfRandomVariable::Discrete) {
+        if (countainerOfBernouliis.getSize() == 0) {
+            throw std::logic_error("Binomial requires at least one Bernoulli trial");
+        }
+
+        const double probabilityForSuccess = countainerOfBernouliis[0]->getSuccessRate();
+        for (size_t i = 1; i < countainerOfBernouliis.getSize(); i++) {
+            if (countainerOfBernouliis[i]->getSuccessRate() != probabilityForSuccess) {
+                throw std::logic_error("All Bernoulli trials must have identical success rate");
+            }
+        }
+
         this->setCountOfExperiments(countainerOfBernouliis.getSize());
 }
 
 uint32_t Binomial::getCountOfExperiments() const {
     return this->countOfExperiments;
+}
+
+void Binomial::setCountOfExperiments(uint32_t countOfExperiments) {
+    if (countOfExperiments == 0) throw std::logic_error("Binomial requires at least one experiment");
+    this->countOfExperiments = countOfExperiments;
 }
 
 double Binomial::calculateProbability(uint32_t number) const {

@@ -7,10 +7,11 @@
 #include "source/data_structures/combinatorics/k_selection/KSelectionPattern.h"
 
 namespace HelperFunctions {
-    static uint32_t binomial(uint32_t n, uint32_t k);
-    static uint32_t permutation(uint32_t n, uint32_t k);
-    static uint32_t power(uint32_t n, uint32_t k);
-};
+    uint32_t binomial(uint32_t n, uint32_t k);
+    uint32_t permutation(uint32_t n, uint32_t k);
+    uint32_t power(uint32_t n, uint32_t k);
+    double power(double n, uint32_t k);
+}
 
 
 class KSelection {

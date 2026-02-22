@@ -12,7 +12,7 @@ private:
 
 	void resize(size_t newCapacity);
 	void copyFrom(const HeterogeneousContainer& other);
-	void moveTo(HeterogeneousContainer&& other);
+    void moveTo(HeterogeneousContainer&& other) noexcept;
     void free();
 
 public:
