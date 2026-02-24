@@ -83,7 +83,8 @@ void HeterogeneousContainer<T>::addElement(const T& element) {
         this->resize(this->size * 2);
     }
     
-    this->data[this->size] = new T(element);
+    // Preserve dynamic type by cloning when T is polymorphic.
+    this->data[this->size] = static_cast<T*>(element.clone());
     this->size += 1;
 }
 
@@ -103,7 +104,7 @@ void HeterogeneousContainer<T>::addElement(const T* element) {
         this->resize(this->size * 2);
     }
     
-    this->data[this->size] = new T(*element);
+    this->data[this->size] = (T*)(element->clone());
     this->size += 1;
 }
 
