@@ -17,7 +17,8 @@ SRC := \
 	source/functions/probability_function/ProbabilityFunction.cpp \
 	source/distributions/discrete_distributions/bernoulii/Bernoulli.cpp \
 	source/distributions/discrete_distributions/binomial/Binomial.cpp \
-	source/distributions/discrete_distributions/geometric/Geometric.cpp
+	source/distributions/discrete_distributions/geometric/Geometric.cpp \
+	source/distributions/discrete_distributions/negative_binomial/NegativeBinomial.cpp
 
 .PHONY: all clean run
 
