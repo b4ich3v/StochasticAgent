@@ -80,11 +80,26 @@ KSelectionPattern KSelection::getBuildingPattern() const {
 }
 
 uint32_t HelperFunctions::binomial(uint32_t n, uint32_t k) {
-    return (uint32_t)(Factoriel()(n) / (Factoriel()(n - k) * Factoriel()(k)));
+    if (k > n) throw std::invalid_argument("k cannot be greater than n");
+    uint32_t kSmall = (k > n - k) ? (n - k) : k;
+    uint64_t result = 1;
+
+    for (uint32_t i = 1; i <= kSmall; i++) {
+        result = result * (n - kSmall + i) / i;
+    }
+
+    return (uint32_t)(result);
 }
 
 uint32_t HelperFunctions::permutation(uint32_t n, uint32_t k) {
-    return (uint32_t)(Factoriel()(n) / Factoriel()(n - k));
+    if (k > n) throw std::invalid_argument("k cannot be greater than n");
+    uint64_t result = 1;
+
+    for (uint32_t i = 0; i < k; i++) {
+        result *= (n - i);
+    }
+
+    return (uint32_t)(result);
 }
 
 uint32_t HelperFunctions::power(uint32_t n, uint32_t k) {
