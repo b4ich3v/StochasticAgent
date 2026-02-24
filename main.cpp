@@ -4,6 +4,7 @@
 #include "source/distributions/BernoulliSchemeRandomVariable.hpp"
 #include <iostream>
 
+
 void fairVsUnfairCoin() {
     size_t countOfExperimenents = 10;
     BernoulliSchemeRandomVariable<bool>* ber1 = new Bernoulli(0.9);
