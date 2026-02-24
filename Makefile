@@ -16,7 +16,8 @@ SRC := \
 	source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraFactory.cpp \
 	source/functions/probability_function/ProbabilityFunction.cpp \
 	source/distributions/discrete_distributions/bernoulii/Bernoulli.cpp \
-	source/distributions/discrete_distributions/binomial/Binomial.cpp
+	source/distributions/discrete_distributions/binomial/Binomial.cpp \
+	source/distributions/discrete_distributions/geometric/Geometric.cpp
 
 .PHONY: all clean run
 
