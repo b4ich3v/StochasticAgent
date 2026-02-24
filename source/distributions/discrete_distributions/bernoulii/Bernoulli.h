@@ -1,14 +1,14 @@
 #pragma once
 
-#include "source/distributions/RandomVariable.hpp"
+#include "source/distributions/BernoulliSchemeRandomVariable.hpp"
 
 
-class Bernoulli: public RandomVariable<bool> {
+class Bernoulli: public BernoulliSchemeRandomVariable<bool> {
 public:
     Bernoulli(Success success);
 
     double calculateProbability(bool number) const override;
     double getExpectation() const override;
     double getVariance() const override;
-    RandomVariable* clone() const override;
+    BernoulliSchemeRandomVariable* clone() const override;
 };

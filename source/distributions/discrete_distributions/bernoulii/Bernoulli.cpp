@@ -1,6 +1,6 @@
 #include "source/distributions/discrete_distributions/bernoulii/Bernoulli.h"
 
-Bernoulli::Bernoulli(Success success): RandomVariable(success, TypeOfRandomVariable::Discrete) {}
+Bernoulli::Bernoulli(Success success): BernoulliSchemeRandomVariable(success, TypeOfRandomVariable::Discrete) {}
 
 double Bernoulli::calculateProbability(bool number) const {
     if (number == 1) return this->getSuccessRate();
@@ -16,6 +16,6 @@ double Bernoulli::getVariance() const {
     return this->getFailureRate() * this->getSuccessRate();
 }
 
-RandomVariable<bool>* Bernoulli::clone() const {
+BernoulliSchemeRandomVariable<bool>* Bernoulli::clone() const {
     return new Bernoulli(*this);
 }
