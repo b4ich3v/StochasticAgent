@@ -1,7 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <stdexcept>
 #include "source/distributions/TypeOfRandomVariable.h"
+#include "source/distributions/RandomVariable.hpp"
 #include "source/functions/probability_function/ProbabilityFunction.h"
 
 typedef double Success;
@@ -9,7 +11,7 @@ typedef double Failure;
 
 
 template <class T>
-class BernoulliSchemeRandomVariable {
+class BernoulliSchemeRandomVariable: public RandomVariable<T> {
 private:
     TypeOfRandomVariable type = TypeOfRandomVariable::None;
     Success success = 0.0;
@@ -25,12 +27,6 @@ public:
     Success getSuccessRate() const;
     Failure getFailureRate() const;
     TypeOfRandomVariable getType() const;
-
-    virtual double calculateProbability(T number) const = 0;
-    virtual double getExpectation() const = 0;
-    virtual double getVariance() const = 0;
-    virtual BernoulliSchemeRandomVariable* clone() const = 0;
-    virtual ~BernoulliSchemeRandomVariable() = default;
 };
 
 template <class T>
