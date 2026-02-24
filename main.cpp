@@ -1,29 +1,14 @@
 #include "source/sigma_algebra/SigmaAlgebra.h"
 #include "source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraFactory.h"
+#include "source/distributions/discrete_distributions/binomial/Binomial.h"
+#include "source/distributions/BernoulliSchemeRandomVariable.hpp"
 #include <iostream>
 
 
-void test() {
-    ElementaryEvent e1("Event 1");
-    ElementaryEvent e2("Event 2");
-    ElementaryEvent e3("Event 3");
-
-    Vector<ElementaryEvent> arr;
-    arr.push_back(e1);
-    arr.push_back(e2);
-    arr.push_back(e3);
-
-    Omega omega(arr);
-
-    SigmaAlgebraAbstractFactory* factory = new SigmaAlgebraFactory();
-    SigmaAlgebra* sigma = factory->create(SigmaAlgebraPattern::Trivial, &omega);
-    std::cout << *sigma << std::endl;
-
-    delete factory;
-    delete sigma;
-}
-
 int main() {
-    test();
+    BernoulliSchemeRandomVariable<uint32_t>* bin = new Binomial(2, 0.5);
+    std::cout << bin->calculateProbability(2) << std::endl;
+
+    delete bin;
     return 0;
 }

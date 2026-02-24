@@ -10,5 +10,5 @@ public:
     double calculateProbability(bool number) const override;
     double getExpectation() const override;
     double getVariance() const override;
-    BernoulliSchemeRandomVariable* clone() const override;
+    BernoulliSchemeRandomVariable<bool>* clone() const override;
 };

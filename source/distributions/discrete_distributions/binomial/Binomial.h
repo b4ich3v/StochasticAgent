@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include "source/distributions/BernoulliSchemeRandomVariable.hpp"
 #include "source/distributions/discrete_distributions/bernoulii/Bernoulli.h"
 #include "source/data_structures/heterogeneous_container/HeterogeneousContainer.hpp"
@@ -18,5 +19,5 @@ public:
     double calculateProbability(uint32_t number) const override;
     double getExpectation() const override;
     double getVariance() const override;
-    BernoulliSchemeRandomVariable* clone() const override;
+    BernoulliSchemeRandomVariable<uint32_t>* clone() const override;
 };
