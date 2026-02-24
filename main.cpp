@@ -4,11 +4,29 @@
 #include "source/distributions/BernoulliSchemeRandomVariable.hpp"
 #include <iostream>
 
+void fairVsUnfairCoin() {
+    size_t countOfExperimenents = 10;
+    BernoulliSchemeRandomVariable<bool>* ber1 = new Bernoulli(0.9);
+    BernoulliSchemeRandomVariable<bool>* ber2 = new Bernoulli(0.5);
+
+    HeterogeneousContainer<BernoulliSchemeRandomVariable<bool>> bersFair;
+    HeterogeneousContainer<BernoulliSchemeRandomVariable<bool>> bersUnFair;
+    for (size_t i = 0; i < countOfExperimenents; i++) bersFair.addElement(ber2);
+    for (size_t i = 0; i < countOfExperimenents; i++) bersUnFair.addElement(ber1);
+    
+    BernoulliSchemeRandomVariable<uint32_t>* binFair = new Binomial(bersFair);
+    BernoulliSchemeRandomVariable<uint32_t>* binUnFair = new Binomial(bersUnFair);
+    std::cout << binFair->calculateProbability(5) << std::endl;
+    std::cout << binUnFair->calculateProbability(5) << std::endl;
+
+    delete ber1;
+    delete ber2;
+    delete binFair;
+    delete binUnFair;
+}
+
 
 int main() {
-    BernoulliSchemeRandomVariable<uint32_t>* bin = new Binomial(2, 0.5);
-    std::cout << bin->calculateProbability(2) << std::endl;
-
-    delete bin;
+    fairVsUnfairCoin();
     return 0;
 }
