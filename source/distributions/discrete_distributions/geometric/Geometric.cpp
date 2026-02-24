@@ -4,7 +4,7 @@
 Geometric::Geometric(Success success): BernoulliSchemeRandomVariable(success, TypeOfRandomVariable::Discrete) {}
 
 double Geometric::calculateProbability(uint32_t number) const {
-    return this->getSuccessRate() * HelperFunctions::power(this->getFailureRate(), number - 1);
+    return this->getSuccessRate() * HelperFunctions::power(this->getFailureRate(), number);
 }
 
 double Geometric::getExpectation() const {
