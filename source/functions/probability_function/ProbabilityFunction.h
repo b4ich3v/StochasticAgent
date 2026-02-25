@@ -20,6 +20,7 @@ private:
 
 public:
     ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter);
+    ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, const Vector<Pair<Event, double>>& probabilities);
 
     const SigmaAlgebra* getSigmaAlgebraPointer() const;
     const Vector<Pair<Event, double>>& getProbabilities() const;

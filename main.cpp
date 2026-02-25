@@ -1,5 +1,7 @@
 #include "source/sigma_algebra/SigmaAlgebra.h"
 #include "source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraFactory.h"
+#include "source/functions/probability_function/ProbabilityFunction.h"
+#include "source/functions/conditional_probability_function/ConditionalProbabilityFunction.h"
 #include "source/distributions/discrete_distributions/binomial/Binomial.h"
 #include "source/distributions/BernoulliSchemeRandomVariable.hpp"
 #include "source/Constants.h"
@@ -51,11 +53,60 @@ void test2() {
     std::cout << (event1 | event2) << std::endl;
 }
 
+void test3() {
+    ElementaryEvent e1("It is 1");
+    ElementaryEvent e2("It is 2");
+    ElementaryEvent e3("It is 3");
+    ElementaryEvent e4("It is 4");
+    ElementaryEvent e5("It is 5");
+    ElementaryEvent e6("It is 6");
 
+    Event eventFour;
+    eventFour.addElementaryEvent(e4);
+
+    Event eventEven;
+    eventEven.addElementaryEvent(e2);
+    eventEven.addElementaryEvent(e4);
+    eventEven.addElementaryEvent(e6);
+
+    Event eventOdd;
+    eventOdd.addElementaryEvent(e1);
+    eventOdd.addElementaryEvent(e3);
+    eventOdd.addElementaryEvent(e5);
+
+    Omega* omega = new Omega();
+    omega->addElementaryEvent(e1);
+    omega->addElementaryEvent(e2);
+    omega->addElementaryEvent(e3);
+    omega->addElementaryEvent(e4);
+    omega->addElementaryEvent(e5);
+    omega->addElementaryEvent(e6);
+
+    SigmaAlgebraAbstractFactory* factory = new SigmaAlgebraFactory();
+    SigmaAlgebra* sigmaAlgebra = factory->create(SigmaAlgebraPattern::PowerSet, omega);
+
+    auto diceProbability = [](const Event& event) -> double {
+        return (double)(event.getElementaryEvents().getSize()) / 6.0;
+    };
+
+    ProbabilityFunction probabilityFunction(sigmaAlgebra, diceProbability);
+    ConditionalProbabilityFunction conditionalProbabilityFunction(sigmaAlgebra, diceProbability);
+
+    double pEven = probabilityFunction(eventEven);
+    double pOdd = probabilityFunction(eventOdd);
+    double p4GivenEven = conditionalProbabilityFunction(eventFour, eventEven);
+    double p4GivenOdd = conditionalProbabilityFunction(eventFour, eventOdd);
+
+    double result = p4GivenEven * pEven + p4GivenOdd * pOdd;
+    std::cout << "P({It is 4}) = " << result << std::endl;
+
+    delete omega;
+    delete factory;
+    delete sigmaAlgebra;
+}
 
 int main() {
-    test2();
+    test3();
 
     return 0;
 }
-

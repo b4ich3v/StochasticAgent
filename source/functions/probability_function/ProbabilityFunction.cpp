@@ -8,10 +8,16 @@ Range<double> probabilityRange() {
     return result;
 }
 
-ProbabilityFunction::ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter)
-    : Function<Event, double>(sigmaAlgebra ? sigmaAlgebra->getContainerOfEvents() : Domain<Event>(), probabilityRange()) {
-    setSigmaAlgebraPointer(sigmaAlgebra);
-    fillProbabilities(filter);
+ProbabilityFunction::ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, const Vector<Pair<Event, double>>& probabilities): 
+    Function<Event, double>(sigmaAlgebra ? sigmaAlgebra->getContainerOfEvents() : Domain<Event>(), probabilityRange()) {
+        this->setSigmaAlgebraPointer(sigmaAlgebra);
+        this->probabilities = probabilities;
+}
+
+ProbabilityFunction::ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter): 
+    Function<Event, double>(sigmaAlgebra ? sigmaAlgebra->getContainerOfEvents() : Domain<Event>(), probabilityRange()) {
+    this->setSigmaAlgebraPointer(sigmaAlgebra);
+    this->fillProbabilities(filter);
 }
 
 const SigmaAlgebra* ProbabilityFunction::getSigmaAlgebraPointer() const {
@@ -23,9 +29,9 @@ const Vector<Pair<Event, double>>& ProbabilityFunction::getProbabilities() const
 }
 
 double ProbabilityFunction::operator () (const Event& input) const {
-    for (size_t i = 0; i < probabilities.getSize(); i++) {
-        if (probabilities[i].getFirstComponent() == input) {
-            return probabilities[i].getSecondComponent();
+    for (size_t i = 0; i < this->probabilities.getSize(); i++) {
+        if (this->probabilities[i].getFirstComponent() == input) {
+            return this->probabilities[i].getSecondComponent();
         }
     }
     throw std::logic_error("Event is not part of the sigma-algebra domain");
@@ -53,6 +59,6 @@ void ProbabilityFunction::fillProbabilities(ProbabilityFunctionFilter filter) {
         if (value < 0.0 || value > 1.0) {
             throw std::logic_error("Filter returned probability outside [0, 1]");
         }
-        probabilities.push_back(Pair<Event, double>(events[i], value));
+        this->probabilities.push_back(Pair<Event, double>(events[i], value));
     }
 }
