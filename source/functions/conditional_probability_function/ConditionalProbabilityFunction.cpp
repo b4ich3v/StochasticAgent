@@ -17,7 +17,7 @@ double ConditionalProbabilityFunction::operator () (const Event& left, const Eve
     if (!foundLeft || !foundRight) throw std::logic_error("Input events must be in the same probability space");
 
     Event intersection;
-    const auto& leftElementaryEvents = left.getElementaryEvents();
+    const Vector<ElementaryEvent>& leftElementaryEvents = left.getElementaryEvents();
     const BitSet& rightIds = right.getIdSet();
 
     for (size_t i = 0; i < leftElementaryEvents.getSize(); i++) {
