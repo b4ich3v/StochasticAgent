@@ -9,6 +9,7 @@ SRC := \
 	source/data_structures/bitset/BitSet.cpp \
 	source/data_structures/combinatorics/factoriel/Factoriel.cpp \
 	source/data_structures/combinatorics/k_selection/KSelection.cpp \
+	source/data_structures/interval/Interval.cpp \
 	source/events/elementary_event/ElementaryEvent.cpp \
 	source/events/set_of_elementary_events/SetOfElementaryEvents.cpp \
 	source/events/set_of_elementary_events/event/Event.cpp \
@@ -18,7 +19,7 @@ SRC := \
 	source/distributions/discrete_distributions/bernoulii/Bernoulli.cpp \
 	source/distributions/discrete_distributions/binomial/Binomial.cpp \
 	source/distributions/discrete_distributions/geometric/Geometric.cpp \
-	source/distributions/discrete_distributions/negative_binomial/NegativeBinomial.cpp
+	source/distributions/discrete_distributions/negative_binomial/NegativeBinomial.cpp 
 
 .PHONY: all clean run
 
