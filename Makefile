@@ -20,7 +20,7 @@ SRC := \
 	source/distributions/discrete_distributions/binomial/Binomial.cpp \
 	source/distributions/discrete_distributions/geometric/Geometric.cpp \
 	source/distributions/discrete_distributions/negative_binomial/NegativeBinomial.cpp \
-	source/events/vector_space/VectorSpace.cpp
+	source/events/probability_space/ProbabilitySpace.cpp
 
 .PHONY: all clean run
 

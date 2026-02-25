@@ -5,7 +5,7 @@
 #include "source/functions/function/Function.hpp"
 
 
-class VectorSpace {
+class ProbabilitySpace {
 private:
     const Omega* omega = nullptr;
     const SigmaAlgebra* sigmaAlgebra = nullptr;
@@ -16,7 +16,7 @@ private:
     void setProbabilityFunction(const Function<Event, uint32_t>* probaprobabilityFunctionbiltiyFunction);
 
 public:
-    VectorSpace(const Omega* omega, const SigmaAlgebra* sigmaAlgebra, const Function<Event, uint32_t>* probabilityFunction);
+    ProbabilitySpace(const Omega* omega, const SigmaAlgebra* sigmaAlgebra, const Function<Event, uint32_t>* probabilityFunction);
 
     const Omega* getOmega() const;
     const SigmaAlgebra* getSigmaAlgebra() const;
