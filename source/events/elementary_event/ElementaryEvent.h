@@ -2,6 +2,7 @@
 
 #include "../../data_structures/string/String.h"
 
+
 class ElementaryEvent {
 private:
     String eventDescription;
