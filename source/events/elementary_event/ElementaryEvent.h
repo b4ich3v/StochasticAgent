@@ -16,6 +16,7 @@ public:
     ElementaryEvent(const String& eventDescription);
     ElementaryEvent(const char* eventDescription);
     ElementaryEvent& operator |= (const ElementaryEvent& other);
+    ElementaryEvent& operator &= (const ElementaryEvent& other);
 
     const String& getEventDescriptionn() const;
     int32_t getEventId() const;
@@ -25,3 +26,4 @@ public:
 };
 
 ElementaryEvent operator | (const ElementaryEvent& left, const ElementaryEvent& right);
+ElementaryEvent operator & (const ElementaryEvent& left, const ElementaryEvent& right);

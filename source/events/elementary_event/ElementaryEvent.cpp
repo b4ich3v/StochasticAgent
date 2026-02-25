@@ -43,9 +43,24 @@ ElementaryEvent& ElementaryEvent::operator |= (const ElementaryEvent& other) {
     return *this;
 }
 
+ElementaryEvent& ElementaryEvent::operator &= (const ElementaryEvent& other) {
+    if (this->getEventId() == other.getEventId()) {
+        return *this;
+    }
+
+    *this = ElementaryEvent(this->getEventDescriptionn() + String(" & ") + other.getEventDescriptionn());
+    return *this;
+}
+
 ElementaryEvent operator | (const ElementaryEvent& left, const ElementaryEvent& right) {
     ElementaryEvent result = left;
     result |= right;
+    return result;
+}
+
+ElementaryEvent operator & (const ElementaryEvent& left, const ElementaryEvent& right) {
+    ElementaryEvent result = left;
+    result &= right;
     return result;
 }
 
