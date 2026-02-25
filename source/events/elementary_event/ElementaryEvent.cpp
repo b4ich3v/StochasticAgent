@@ -1,4 +1,5 @@
 #include "ElementaryEvent.h"
+#include "source/Constants.h"
 
 int32_t ElementaryEvent::idMask = 0;
 
@@ -39,7 +40,7 @@ ElementaryEvent& ElementaryEvent::operator |= (const ElementaryEvent& other) {
         return *this;
     }
 
-    *this = ElementaryEvent(this->getEventDescriptionn() + String(" | ") + other.getEventDescriptionn());
+    *this = ElementaryEvent(this->getEventDescriptionn() + String(" ") + RED + "OR" + RESET + " " + other.getEventDescriptionn());
     return *this;
 }
 
@@ -48,7 +49,7 @@ ElementaryEvent& ElementaryEvent::operator &= (const ElementaryEvent& other) {
         return *this;
     }
 
-    *this = ElementaryEvent(this->getEventDescriptionn() + String(" & ") + other.getEventDescriptionn());
+    *this = ElementaryEvent(this->getEventDescriptionn() + String(" ") + RED + "AND" + RESET + " " + other.getEventDescriptionn());
     return *this;
 }
 
