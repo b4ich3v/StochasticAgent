@@ -9,16 +9,16 @@ class ProbabilitySpace {
 private:
     const Omega* omega = nullptr;
     const SigmaAlgebra* sigmaAlgebra = nullptr;
-    const Function<Event, uint32_t>* probabilityFunction = nullptr;
+    const Function<Event, double>* probabilityFunction = nullptr;
 
     void setOmega(const Omega* omega);
     void setSigmaAlgebra(const SigmaAlgebra* sigmaAlgebra);
-    void setProbabilityFunction(const Function<Event, uint32_t>* probaprobabilityFunctionbiltiyFunction);
+    void setProbabilityFunction(const Function<Event, double>* probaprobabilityFunctionbiltiyFunction);
 
 public:
-    ProbabilitySpace(const Omega* omega, const SigmaAlgebra* sigmaAlgebra, const Function<Event, uint32_t>* probabilityFunction);
+    ProbabilitySpace(const Omega* omega, const SigmaAlgebra* sigmaAlgebra, const Function<Event, double>* probabilityFunction);
 
     const Omega* getOmega() const;
     const SigmaAlgebra* getSigmaAlgebra() const;
-    const Function<Event, uint32_t>* getProbabilityFunction() const;
+    const Function<Event, double>* getProbabilityFunction() const;
 };
