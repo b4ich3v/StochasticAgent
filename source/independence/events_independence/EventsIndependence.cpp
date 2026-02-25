@@ -3,6 +3,7 @@
 
 bool EventsIndependence::operator () (const Event& left, const Event& right, 
     const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter) const {
-    return ProbabilityFunction(sigmaAlgebra, filter).operator()(left) == 
-        ProbabilityFunction(sigmaAlgebra, filter).operator()(right);
+    return ProbabilityFunction(sigmaAlgebra, filter).operator()(left) * 
+        ProbabilityFunction(sigmaAlgebra, filter).operator()(right) == 
+        ProbabilityFunction(sigmaAlgebra, filter).operator()(left & right);
 }
