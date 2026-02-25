@@ -21,7 +21,7 @@ double ConditionalProbabilityFunction::operator () (const Event& left, const Eve
     const BitSet& rightIds = right.getIdSet();
 
     for (size_t i = 0; i < leftElementaryEvents.getSize(); i++) {
-        const auto& current = leftElementaryEvents[i];
+        const ElementaryEvent& current = leftElementaryEvents[i];
         if (rightIds.hasNumber(current.getEventId())) {
             intersection.addElementaryEvent(current);
         }
