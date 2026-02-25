@@ -11,7 +11,6 @@ SRC := \
 	source/data_structures/combinatorics/k_selection/KSelection.cpp \
 	source/data_structures/interval/Interval.cpp \
 	source/events/elementary_event/ElementaryEvent.cpp \
-	source/events/set_of_elementary_events/SetOfElementaryEvents.cpp \
 	source/events/set_of_elementary_events/event/Event.cpp \
 	source/sigma_algebra/SigmaAlgebra.cpp \
 	source/sigma_algebra/sigma_algebra_factory/SigmaAlgebraFactory.cpp \

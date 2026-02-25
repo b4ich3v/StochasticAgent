@@ -36,10 +36,25 @@ void test2() {
     ElementaryEvent result2 = elementartyEvent1 & elementartyEvent2;
     std::cout << result1 << std::endl;
     std::cout << result2 << std::endl;
+
+    Vector<ElementaryEvent> container1;
+    Vector<ElementaryEvent> container2;
+
+    container1.push_back(elementartyEvent1);
+    container1.push_back(elementartyEvent2);
+    container2.push_back(elementartyEvent1);
+    container2.push_back(elementartyEvent3);
+
+    Event event1(container1);
+    Event event2(container2);
+    std::cout << (event1 & event2) << std::endl;
+    std::cout << (event1 | event2) << std::endl;
 }
 
-int main() {
 
+
+int main() {
+    test2();
 
     return 0;
 }

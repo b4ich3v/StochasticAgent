@@ -1,14 +1,39 @@
 #pragma once
 
-#include "../SetOfElementaryEvents.h"
+#include <iosfwd>
+#include "source/events/elementary_event/ElementaryEvent.h"
+#include "source/data_structures/vector/Vector.hpp"
+#include "source/data_structures/bitset/BitSet.h"
 
 
-class Event: public SetOfElementaryEvents {
+class Event {
+private:
+    Vector<ElementaryEvent> elementaryEvents;
+    BitSet idSet;
+
+    void reset();
+    size_t findIndexById(int32_t id) const;
+
 public:
-    Event() = default;
-    Event(const Vector<ElementaryEvent>& elementaryEvents)
-        : SetOfElementaryEvents(elementaryEvents) {}
+    Event();
+    explicit Event(const Vector<ElementaryEvent>& elementaryEvents);
+
+    Event& operator &= (const Event& other);
+    Event& operator |= (const Event& other);
+
+    const Vector<ElementaryEvent>& getElementaryEvents() const;
+    const BitSet& getIdSet() const;
+
+    void addElementaryEvent(const ElementaryEvent& event);
+    void removeEvent(int32_t eventId);
+    bool isElementaryEventIn(const ElementaryEvent& event) const;
+    void clean();
+
+    friend std::ostream& operator << (std::ostream& os, const Event& event);
+    friend std::istream& operator >> (std::istream& is, Event& event);
 };
 
+Event operator & (const Event& left, const Event& right);
+Event operator | (const Event& left, const Event& right);
 bool operator == (const Event& left, const Event& right);
 bool operator != (const Event& left, const Event& right);

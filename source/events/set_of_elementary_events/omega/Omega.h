@@ -1,11 +1,10 @@
 #pragma once
 
-#include "../SetOfElementaryEvents.h"
+#include "source/events/set_of_elementary_events/event/Event.h"
 
 
-class Omega: public SetOfElementaryEvents {
+class Omega: public Event {
 public:
     Omega() = default;
-    Omega(const Vector<ElementaryEvent>& elementaryEvents)
-        : SetOfElementaryEvents(elementaryEvents) {}
+    explicit Omega(const Vector<ElementaryEvent>& elementaryEvents): Event(elementaryEvents) {}
 };
