@@ -3,7 +3,7 @@
 #include "source/functions/probability_function/ProbabilityFunction.h"
 #include "source/functions/conditional_probability_function/ConditionalProbabilityFunction.h"
 #include "source/distributions/discrete_distributions/binomial/Binomial.h"
-#include "source/distributions/BernoulliSchemeRandomVariable.hpp"
+#include "source/distributions/discrete_distributions/BernoulliSchemeRandomVariable.hpp"
 #include "source/Constants.h"
 #include "source/functions/function/Function.hpp"
 #include "source/functions/density_function/uniform_density_function/UniformDensityFunction.h"

@@ -2,10 +2,10 @@
 
 #include <cmath>
 #include <iostream>
-#include "source/distributions/RandomVariable.hpp"
+#include "source/distributions/discrete_distributions/DiscreteRandomVariable.hpp"
 
 
-class Poisson: public RandomVariable<uint32_t> {
+class Poisson: public DiscreteRandomVariable<uint32_t> {
 private:
     double lambda = 0.0;
     void setLambda(double lambda);

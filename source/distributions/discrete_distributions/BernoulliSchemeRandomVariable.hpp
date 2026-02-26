@@ -28,7 +28,8 @@ public:
 };
 
 template <class T>
-BernoulliSchemeRandomVariable<T>::BernoulliSchemeRandomVariable(Success success, TypeOfRandomVariable type) {
+BernoulliSchemeRandomVariable<T>::BernoulliSchemeRandomVariable(Success success, TypeOfRandomVariable type)
+    : DiscreteRandomVariable<T>(DiscreteRandomVariableType::None) {
     this->setType(type);
     this->setSuccessRate(success);
     this->setFailureRate(1 - success);
