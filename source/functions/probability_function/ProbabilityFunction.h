@@ -5,6 +5,7 @@
 #include "../../events/set_of_elementary_events/event/Event.h"
 #include "../../data_structures/pair/Pair.hpp"
 #include "../../data_structures/vector/Vector.hpp"
+#include "../../data_structures/interval/Interval.h"
 
 typedef double (*ProbabilityFunctionFilter)(const Event& event);
 Range<double> probabilityRange();
