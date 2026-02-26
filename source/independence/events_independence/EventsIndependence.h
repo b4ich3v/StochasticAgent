@@ -1,10 +1,11 @@
 #pragma once
 
 #include "source/events/set_of_elementary_events/event/Event.h"
+#include "source/functions/function/Function.hpp"
 
 
 class EventsIndependence {
 public:
     bool operator () (const Event& left, const Event& right, 
-        const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter) const;
+        Function<Event, double>* probabilityFunction) const;
 };

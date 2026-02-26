@@ -2,8 +2,8 @@
 #include "source/functions/probability_function/ProbabilityFunction.h"
 
 bool EventsIndependence::operator () (const Event& left, const Event& right, 
-    const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter) const {
-    return ProbabilityFunction(sigmaAlgebra, filter).operator()(left) * 
-        ProbabilityFunction(sigmaAlgebra, filter).operator()(right) == 
-        ProbabilityFunction(sigmaAlgebra, filter).operator()(left & right);
+    Function<Event, double>* probabilityFunction) const {
+    return probabilityFunction->operator()(left) * 
+        probabilityFunction->operator()(right) == 
+        probabilityFunction->operator()(left & right);
 }
