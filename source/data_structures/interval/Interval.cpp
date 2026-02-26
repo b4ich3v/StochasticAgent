@@ -9,7 +9,7 @@ Interval::Interval(double left, double right) {
 
 Interval& Interval::operator |= (const Interval& other) {
     this->setLeftComponent(std::min(this->left, other.getLeftComponent()));
-    this->setRightComponent(std::max(this->left, other.getRightComponent()));
+    this->setRightComponent(std::max(this->right, other.getRightComponent()));
     return *this;
 }
 
