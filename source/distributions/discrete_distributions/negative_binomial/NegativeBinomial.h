@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include "source/distributions/BernoulliSchemeRandomVariable.hpp"
+#include "source/distributions/discrete_distributions/BernoulliSchemeRandomVariable.hpp"
 #include "source/distributions/discrete_distributions/bernoulii/Bernoulli.h"
 #include "source/data_structures/heterogeneous_container/HeterogeneousContainer.hpp"
 

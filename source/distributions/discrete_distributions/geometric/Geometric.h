@@ -1,6 +1,6 @@
 #pragma once
 
-#include "source/distributions/BernoulliSchemeRandomVariable.hpp"
+#include "source/distributions/discrete_distributions/BernoulliSchemeRandomVariable.hpp"
 
 
 class Geometric: public BernoulliSchemeRandomVariable<uint32_t> {
