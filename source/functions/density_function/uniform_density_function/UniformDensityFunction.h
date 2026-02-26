@@ -10,7 +10,7 @@ private:
     void setInterval(const Interval& interval);
 
 public:
-    explicit UniformDensityFunction(const Interval& interval);
+    UniformDensityFunction(const Interval& interval);
 
     double operator () (const double& input) const override;
     Function<double, double>* clone() const override;
