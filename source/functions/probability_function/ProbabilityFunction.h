@@ -8,7 +8,7 @@
 #include "../../data_structures/interval/Interval.h"
 
 typedef double (*ProbabilityFunctionFilter)(const Event& event);
-Range<double> probabilityRange();
+Range<double> probabilityFunctionRange();
 
 
 class ProbabilityFunction: public Function<Event, double> {

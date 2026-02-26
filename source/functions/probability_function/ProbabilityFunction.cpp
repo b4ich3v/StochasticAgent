@@ -1,18 +1,18 @@
 #include <stdexcept>
 #include "ProbabilityFunction.h"
 
-Range<double> probabilityRange() {
+Range<double> probabilityFunctionRange() {
     return Interval(0.0, 1.0);
 }
 
 ProbabilityFunction::ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, const Vector<Pair<Event, double>>& probabilities): 
-    Function<Event, double>(sigmaAlgebra ? sigmaAlgebra->getContainerOfEvents() : Domain<Event>(), probabilityRange()) {
+    Function<Event, double>(sigmaAlgebra ? sigmaAlgebra->getContainerOfEvents() : Domain<Event>(), probabilityFunctionRange()) {
         this->setSigmaAlgebraPointer(sigmaAlgebra);
         this->probabilities = probabilities;
 }
 
 ProbabilityFunction::ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter): 
-    Function<Event, double>(sigmaAlgebra ? sigmaAlgebra->getContainerOfEvents() : Domain<Event>(), probabilityRange()) {
+    Function<Event, double>(sigmaAlgebra ? sigmaAlgebra->getContainerOfEvents() : Domain<Event>(), probabilityFunctionRange()) {
     this->setSigmaAlgebraPointer(sigmaAlgebra);
     this->fillProbabilities(filter);
 }
