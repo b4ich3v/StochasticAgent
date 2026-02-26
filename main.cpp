@@ -109,12 +109,16 @@ void test3() {
     delete sigmaAlgebra;
 }
 
-int main() {
+void test4() {
     Function<double, double>* function = new UniformDensityFunction(Interval(0, 3));
     Integral* integral = new TrapezoidalRuleIntergral(function, 10000);
     std::cout << integral->intergrate(1.5, 3) << std::endl;
 
     delete function;
     delete integral;
+}
+
+int main() {
+
     return 0;
 }
