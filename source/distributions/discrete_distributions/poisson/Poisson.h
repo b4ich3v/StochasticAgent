@@ -11,7 +11,7 @@ private:
     void setLambda(double lambda);
 
 public:
-    explicit Poisson(double lambda);
+    Poisson(double lambda);
     double calculateProbability(uint32_t number) const override;
     double getExpectation() const override;
     double getVariance() const override;
