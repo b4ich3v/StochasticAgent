@@ -12,7 +12,7 @@ void Poisson::setLambda(double lambda) {
     this->lambda = lambda;
 }
 
-double Poisson::calculateProbability(uint32_t number) const {
+double Poisson::calculateProbability(const uint32_t& number) const {
     double numerator = std::pow(this->lambda, static_cast<double>(number));
     double denominator = static_cast<double>(Factoriel()(number));
     double result = std::exp(-this->lambda) * (numerator / denominator);

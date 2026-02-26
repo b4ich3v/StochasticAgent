@@ -26,7 +26,7 @@ uint32_t NegativeBinomial::getCountOfSuccessesTarget() const {
 }
 
 void NegativeBinomial::setCountOfExperiments(uint32_t successesTarget) {
-    if (successesTarget == 0) throw std::logic_error("Binomial requires at least one experiment");
+    if (successesTarget == 0) throw std::logic_error("NegativeBinomial requires at least one target success");
     this->successesTarget = successesTarget;
 }
 

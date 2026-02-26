@@ -12,7 +12,7 @@ private:
 
 public:
     Poisson(double lambda);
-    double calculateProbability(uint32_t number) const override;
+    double calculateProbability(const uint32_t& number) const override;
     double getExpectation() const override;
     double getVariance() const override;
     RandomVariable<uint32_t>* clone() const override;

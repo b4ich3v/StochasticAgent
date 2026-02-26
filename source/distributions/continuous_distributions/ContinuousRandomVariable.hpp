@@ -37,8 +37,8 @@ public:
 
 template <class T>
 ContinuousRandomVariable<T>::ContinuousRandomVariable(const Vector<T>& inputParams, ContinuousRandomVariableType type) {
-    this->setParameters(inputParams);
     this->setType(type);
+    this->setParameters(inputParams);
     this->setDensityFunction();
 }
 
@@ -92,23 +92,28 @@ void ContinuousRandomVariable<T>::setType(ContinuousRandomVariableType type) {
 template <class T>
 void ContinuousRandomVariable<T>::setDensityFunction() {
     switch (this->type) {
-    case ContinuousRandomVariableType::Uniform: this->densityFunction = new UniformDensityFunction(this->parameters[0], this->parameters[1]); break;;
+    case ContinuousRandomVariableType::Uniform: this->densityFunction = new UniformDensityFunction(Interval(this->parameters[0], this->parameters[1])); break;;
     default: throw std::runtime_error("Unsupported ContinuousRandomVariable");
     }
 }
 
 template <class T>
 void ContinuousRandomVariable<T>::moveTo(ContinuousRandomVariable&& other) noexcept {
+    this->parameters = other.parameters;
+    this->type = other.type;
     this->densityFunction = other.densityFunction;
+    
     other.densityFunction = nullptr;
+    other.type = ContinuousRandomVariableType::None;
 }
 
 template <class T>
 void ContinuousRandomVariable<T>::copyFrom(const ContinuousRandomVariable& other) {
+    this->parameters = other.parameters;
     this->type = other.type;
         switch (this->type) {
         case ContinuousRandomVariableType::Uniform: 
-            this->densityFunction = new UniformDensityFunction(other.ggetParameters()[0], other.getParameters()[1]); 
+            this->densityFunction = new UniformDensityFunction(Interval(other.getParameters()[0], other.getParameters()[1])); 
             break;;
         default: 
             throw std::runtime_error("Unsupported ContinuousRandomVariable");
@@ -117,10 +122,10 @@ void ContinuousRandomVariable<T>::copyFrom(const ContinuousRandomVariable& other
 
 template <class T>
 void ContinuousRandomVariable<T>::setParameters(const Vector<T>& inputParameters) {
-    if (this->type == ContinuousRandomVariableType::Uniform && (inputParameters.getSize() != 2 || inputParameters[0] > inputParameters[1])) {
-        throw std::runtime_error("First parameter must be greater than second one");
+    if (this->type == ContinuousRandomVariableType::Uniform && (inputParameters.getSize() != 2 || inputParameters[0] >= inputParameters[1])) {
+        throw std::runtime_error("Uniform distribution requires two parameters with lower < upper");
     } 
-    this->parameters = parameters;
+    this->parameters = inputParameters;
 }
 
 template <class T>
