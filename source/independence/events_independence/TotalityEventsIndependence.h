@@ -7,5 +7,5 @@
 class TotalityEventsIndependence {
 public:
     bool operator () (const Vector<Event>& containerOfEvents, 
-        const SigmaAlgebra* sigmaAlgebra, ProbabilityFunctionFilter filter) const;
+        Function<Event, double>* probabilityFunction) const;
 };
