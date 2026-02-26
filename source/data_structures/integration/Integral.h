@@ -7,14 +7,14 @@
 
 class Integral {
 protected:
-    Function<double, double>* function = nullptr;
+    const Function<double, double>* function = nullptr;
     IntegrationApproximaton approximation = IntegrationApproximaton::None;
 
-    void setFunctionPtr(Function<double, double>* function);
+    void setFunctionPtr(const Function<double, double>* function);
     void setIntegrationApproximaton(IntegrationApproximaton approximation);
 
 public:
-    Integral(Function<double, double>* function, IntegrationApproximaton approximation);
+    Integral(const Function<double, double>* function, IntegrationApproximaton approximation);
 
     virtual double intergrate(double lower, double upper) const = 0;
     virtual Integral* clone() const = 0;

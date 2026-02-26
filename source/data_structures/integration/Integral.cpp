@@ -1,11 +1,11 @@
 #include "source/data_structures/integration/Integral.h"
 
-Integral::Integral(Function<double, double>* function, IntegrationApproximaton approximation) {
+Integral::Integral(const Function<double, double>* function, IntegrationApproximaton approximation) {
     this->setFunctionPtr(function);
     this->setIntegrationApproximaton(approximation);
 }
 
-void Integral::setFunctionPtr(Function<double, double>* function) {
+void Integral::setFunctionPtr(const Function<double, double>* function) {
     if (!function) throw std::runtime_error("Nullptr detected");
     this->function = function;
 }
