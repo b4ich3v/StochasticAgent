@@ -2,10 +2,7 @@
 #include "ProbabilityFunction.h"
 
 Range<double> probabilityRange() {
-    Range<double> result;
-    result.push_back(0.0);
-    result.push_back(1.0);
-    return result;
+    return Interval(0.0, 1.0);
 }
 
 ProbabilityFunction::ProbabilityFunction(const SigmaAlgebra* sigmaAlgebra, const Vector<Pair<Event, double>>& probabilities): 
