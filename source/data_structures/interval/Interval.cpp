@@ -1,7 +1,7 @@
 #include "Interval.h"
 #include <algorithm>
 
-Interval::Interval(uint32_t left, uint32_t right) {
+Interval::Interval(double left, double right) {
     if (left > right) throw std::runtime_error("Right component must be greater than left one");
     this->setLeftComponent(left);
     this->setRightComponent(right);
@@ -19,15 +19,15 @@ Interval& Interval::operator &= (const Interval& other) {
     return *this;
 }
 
-bool Interval::isInInterval(uint32_t number) const {
+bool Interval::isInInterval(double number) const {
     return number >= this->left && number <= this->right;
 }
 
-uint32_t Interval::getLeftComponent() const {
+double Interval::getLeftComponent() const {
     return this->left;
 }
 
-uint32_t Interval::getRightComponent() const {
+double Interval::getRightComponent() const {
     return this->right;
 }
 
@@ -43,10 +43,10 @@ Interval operator | (const Interval& left, const Interval& right) {
     return result;
 }
 
-void Interval::setLeftComponent(uint32_t left) {
+void Interval::setLeftComponent(double left) {
     this->left = left;
 }
 
-void Interval::setRightComponent(uint32_t right) {
+void Interval::setRightComponent(double right) {
     this->right = right;
 }
