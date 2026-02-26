@@ -138,3 +138,11 @@ std::istream& operator >> (std::istream& is, Event& event) {
 
     return is;
 }
+
+const ElementaryEvent& Event::operator [] (size_t index) const {
+    return this->elementaryEvents[index];
+}
+
+ElementaryEvent& Event::operator [] (size_t index) {
+    return this->elementaryEvents[index];
+}

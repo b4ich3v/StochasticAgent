@@ -18,6 +18,8 @@ public:
     Event();
     explicit Event(const Vector<ElementaryEvent>& elementaryEvents);
 
+    const ElementaryEvent& operator [] (size_t index) const;
+    ElementaryEvent& operator [] (size_t index);
     Event& operator &= (const Event& other);
     Event& operator |= (const Event& other);
 
