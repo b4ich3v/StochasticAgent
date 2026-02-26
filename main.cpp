@@ -6,7 +6,9 @@
 #include "source/distributions/BernoulliSchemeRandomVariable.hpp"
 #include "source/Constants.h"
 #include "source/functions/function/Function.hpp"
+#include "source/functions/density_function/uniform_density_function/UniformDensityFunction.h"
 #include "source/data_structures/integration/trapezoidal_rule_intergral/TrapezoidalRuleIntergral.h"
+#include "source/data_structures/interval/Interval.h"
 #include <iostream>
 
 
@@ -108,6 +110,11 @@ void test3() {
 }
 
 int main() {
-    
+    Function<double, double>* function = new UniformDensityFunction(Interval(0, 3));
+    Integral* integral = new TrapezoidalRuleIntergral(function, 10000);
+    std::cout << integral->intergrate(1.5, 3) << std::endl;
+
+    delete function;
+    delete integral;
     return 0;
 }
