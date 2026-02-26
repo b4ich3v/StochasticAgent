@@ -3,7 +3,7 @@
 
 Geometric::Geometric(Success success): BernoulliSchemeRandomVariable(success, TypeOfRandomVariable::Discrete) {}
 
-double Geometric::calculateProbability(uint32_t number) const {
+double Geometric::calculateProbability(const uint32_t& number) const {
     return this->getSuccessRate() * HelperFunctions::power(this->getFailureRate(), number);
 }
 

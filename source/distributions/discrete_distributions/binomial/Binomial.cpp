@@ -30,7 +30,7 @@ void Binomial::setCountOfExperiments(uint32_t countOfExperiments) {
     this->countOfExperiments = countOfExperiments;
 }
 
-double Binomial::calculateProbability(uint32_t number) const {
+double Binomial::calculateProbability(const uint32_t& number) const {
     if (number > this->countOfExperiments) return 0.0;
     return KSelection(KSelectionPattern::Combination, this->countOfExperiments, number).generateCount() * 
         HelperFunctions::power(this->getSuccessRate(), number) * 

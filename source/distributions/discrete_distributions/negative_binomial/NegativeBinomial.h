@@ -16,7 +16,7 @@ public:
     NegativeBinomial(const HeterogeneousContainer<BernoulliSchemeRandomVariable<uint32_t>>& countainerOfGeometrics);
     uint32_t getCountOfSuccessesTarget() const;
 
-    double calculateProbability(uint32_t number) const override;
+    double calculateProbability(const uint32_t& number) const override;
     double getExpectation() const override;
     double getVariance() const override;
     BernoulliSchemeRandomVariable<uint32_t>* clone() const override;
