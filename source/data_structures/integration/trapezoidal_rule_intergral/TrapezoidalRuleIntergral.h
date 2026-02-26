@@ -10,7 +10,7 @@ private:
     void setCountOfNonSubIntervals(size_t countOfNonSubIntervals);
 
 public:
-    TrapezoidalRuleIntergral(Function<double, double>* function, size_t countOfNonSubIntervals);
+    TrapezoidalRuleIntergral(const Function<double, double>* function, size_t countOfNonSubIntervals);
     
     double intergrate(double lower, double upper) const override;
     Integral* clone() const override;

@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 
-TrapezoidalRuleIntergral::TrapezoidalRuleIntergral(Function<double, double>* function, size_t countOfNonSubIntervals):
+TrapezoidalRuleIntergral::TrapezoidalRuleIntergral(const Function<double, double>* function, size_t countOfNonSubIntervals):
     Integral(function, IntegrationApproximaton::TrapezoidalRule) {
         this->setCountOfNonSubIntervals(countOfNonSubIntervals);
 }
