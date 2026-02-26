@@ -12,5 +12,5 @@ public:
     double calculateProbability(const Interval& interval) const override;
     double getExpectation() const override;
     double getVariance() const override;
-    RandomVariable* clone() const override;
+    RandomVariable<Interval>* clone() const override;
 };

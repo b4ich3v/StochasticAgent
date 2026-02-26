@@ -33,6 +33,7 @@ public:
 
     const Vector<T>& getParameters() const;
     const Function<double, double>* getDensityFunction() const;
+    TypeOfRandomVariable getOverallType() const override;
 };
 
 template <class T>
@@ -136,4 +137,9 @@ const Vector<T>& ContinuousRandomVariable<T>::getParameters() const {
 template <class T>
 const Function<double, double>* ContinuousRandomVariable<T>::getDensityFunction() const {
     return this->densityFunction;
+}
+
+template <class T>
+TypeOfRandomVariable ContinuousRandomVariable<T>::getOverallType() const {
+    return TypeOfRandomVariable::Continuous;
 }

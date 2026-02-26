@@ -2,16 +2,14 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "source/distributions/TypeOfRandomVariable.h"
-#include "source/distributions/RandomVariable.hpp"
-#include "source/functions/probability_function/ProbabilityFunction.h"
+#include "source/distributions/discrete_distributions/DiscreteRandomVariable.hpp"
 
 typedef double Success;
 typedef double Failure;
 
 
 template <class T>
-class BernoulliSchemeRandomVariable: public RandomVariable<T> {
+class BernoulliSchemeRandomVariable: public DiscreteRandomVariable<T> {
 private:
     TypeOfRandomVariable type = TypeOfRandomVariable::None;
     Success success = 0.0;
