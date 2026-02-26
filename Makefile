@@ -20,10 +20,13 @@ SRC := \
     source/distributions/discrete_distributions/geometric/Geometric.cpp \
     source/distributions/discrete_distributions/negative_binomial/NegativeBinomial.cpp \
     source/distributions/discrete_distributions/poisson/Poisson.cpp \
+    source/data_structures/integration/Integral.cpp \
     source/events/probability_space/ProbabilitySpace.cpp \
     source/functions/conditional_probability_function/ConditionalProbabilityFunction.cpp \
     source/functions/conditional_probability_function/full_probability_formula/FullProbabilityFormula.cpp \
-    source/events/set_of_elementary_events/full_group_of_events/FullGroupOfEvents.cpp
+    source/events/set_of_elementary_events/full_group_of_events/FullGroupOfEvents.cpp \
+    source/data_structures/integration/trapezoidal_rule_intergral/TrapezoidalRuleIntergral.cpp \
+    source/functions/density_function/uniform_density_function/UniformDensityFunction.cpp
 
 .PHONY: all clean run
 

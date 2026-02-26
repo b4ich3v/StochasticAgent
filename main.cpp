@@ -5,6 +5,8 @@
 #include "source/distributions/discrete_distributions/binomial/Binomial.h"
 #include "source/distributions/BernoulliSchemeRandomVariable.hpp"
 #include "source/Constants.h"
+#include "source/functions/function/Function.hpp"
+#include "source/data_structures/integration/trapezoidal_rule_intergral/TrapezoidalRuleIntergral.h"
 #include <iostream>
 
 
@@ -107,6 +109,5 @@ void test3() {
 
 int main() {
     
-
     return 0;
 }
