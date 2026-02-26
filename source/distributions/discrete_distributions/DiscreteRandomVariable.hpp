@@ -8,7 +8,7 @@ template <class T>
 class DiscreteRandomVariable: public RandomVariable<T> {
 protected:
     DiscreteRandomVariableType type = DiscreteRandomVariableType::None;
-    void setType(DiscreteRandomVariable type);
+    void setType(DiscreteRandomVariableType type);
 
 public:
     DiscreteRandomVariable(DiscreteRandomVariableType type);
@@ -21,8 +21,8 @@ TypeOfRandomVariable DiscreteRandomVariable<T>::getOverallType() const {
 }
 
 template <class T>
-DiscreteRandomVariable::<T>DiscreteRandomVariable(DiscreteRandomVariableType type) {
-    this->se
+DiscreteRandomVariable<T>::DiscreteRandomVariable(DiscreteRandomVariableType type) {
+    this->setType(type);
 }
 
 template <class T>
