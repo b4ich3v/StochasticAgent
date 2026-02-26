@@ -4,6 +4,8 @@
 #include "source/events/set_of_elementary_events/event/Event.h"
 #include "source/functions/function/Function.hpp"
 
+Event intersectSubset(const Vector<Event>& events, size_t mask);
+
 
 class TotalityEventsIndependence {
 public:
