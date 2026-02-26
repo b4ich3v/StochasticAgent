@@ -1,16 +1,17 @@
 #pragma once
 
+#include <cmath>
 #include <iostream>
 #include "source/distributions/RandomVariable.hpp"
 
 
-class Poisson: RandomVariable<uint32_t> {
+class Poisson: public RandomVariable<uint32_t> {
 private:
-    size_t lambda = 0;
-    void setLambda(size_t lambda);
+    double lambda = 0.0;
+    void setLambda(double lambda);
 
 public:
-    Poisson(size_t lambda);
+    explicit Poisson(double lambda);
     double calculateProbability(uint32_t number) const override;
     double getExpectation() const override;
     double getVariance() const override;

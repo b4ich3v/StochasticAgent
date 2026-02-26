@@ -1,21 +1,27 @@
 #include "source/distributions/discrete_distributions/poisson/Poisson.h"
-#include "source/data_structures/combinatorics/k_selection/KSelection.h"
 #include "source/data_structures/combinatorics/factoriel/Factoriel.h"
 #include "source/Constants.h"
+#include <stdexcept>
 
-Poisson::Poisson(size_t lambda) {
+Poisson::Poisson(double lambda) {
     this->setLambda(lambda);
 }
 
+void Poisson::setLambda(double lambda) {
+    if (lambda <= 0.0) throw std::logic_error("Poisson lambda must be positive");
+    this->lambda = lambda;
+}
+
 double Poisson::calculateProbability(uint32_t number) const {
-    return (HelperFunctions::power((uint32_t)this->lambda, number) / Factoriel().operator()(number)) * 
-        HelperFunctions::power(EULER_NUMBER, -1 * this->lambda);
-    
+    double numerator = std::pow(this->lambda, static_cast<double>(number));
+    double denominator = static_cast<double>(Factoriel()(number));
+    double result = std::exp(-this->lambda) * (numerator / denominator);
+    return result;
 }
 
 double Poisson::getExpectation() const {
     return this->lambda;
-};
+}
 
 double Poisson::getVariance() const {
     return this->lambda;
