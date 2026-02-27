@@ -7,5 +7,6 @@
 
 class DensityFunction: public Function<double, double> {
 protected:
-    DensityFunction(): Function<double, double>(Domain<double>(), Interval(0.0, std::numeric_limits<double>::infinity())) {}
+    DensityFunction(): 
+        Function<double, double>(Domain<double>(), Interval(0.0, std::numeric_limits<double>::infinity())) {}
 };
