@@ -6,6 +6,7 @@
 #include "source/functions/function/Function.hpp"
 #include "source/functions/density_function/uniform_density_function/UniformDensityFunction.h"
 #include "source/data_structures/vector/Vector.hpp"
+#include "source/functions/density_function/normal_density_function/NormalDensityFunction.h"
 
 
 template <class T>
@@ -93,7 +94,8 @@ void ContinuousRandomVariable<T>::setType(ContinuousRandomVariableType type) {
 template <class T>
 void ContinuousRandomVariable<T>::setDensityFunction() {
     switch (this->type) {
-    case ContinuousRandomVariableType::Uniform: this->densityFunction = new UniformDensityFunction(Interval(this->parameters[0], this->parameters[1])); break;;
+    case ContinuousRandomVariableType::Uniform: this->densityFunction = new UniformDensityFunction(Interval(this->parameters[0], this->parameters[1])); break;
+    case ContinuousRandomVariableType::Normal: this->densityFunction = new NormalDensityFunction(this->parameters[0], this->parameters[1])); break;
     default: throw std::runtime_error("Unsupported ContinuousRandomVariable");
     }
 }
