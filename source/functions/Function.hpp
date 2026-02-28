@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../data_structures/vector/Vector.hpp"
-#include "../../data_structures/interval/Interval.h"
+#include "source/data_structures/vector/Vector.hpp"
+#include "source/data_structures/interval/Interval.h"
 
 template <class T> using Domain = Vector<T>;
 template <class T> using Range = Interval;

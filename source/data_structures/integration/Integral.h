@@ -1,6 +1,6 @@
 #pragma once
 
-#include "source/functions/function/Function.hpp"
+#include "source/functions/Function.hpp"
 #include "source/data_structures/integration/IntegrationApproximaton.h"
 #include <stdexcept>
 

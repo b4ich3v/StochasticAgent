@@ -5,7 +5,7 @@
 #include "source/distributions/discrete_distributions/binomial/Binomial.h"
 #include "source/distributions/discrete_distributions/BernoulliSchemeRandomVariable.hpp"
 #include "source/Constants.h"
-#include "source/functions/function/Function.hpp"
+#include "source/functions/Function.hpp"
 #include "source/functions/density_function/uniform_density_function/UniformDensityFunction.h"
 #include "source/data_structures/integration/trapezoidal_rule_intergral/TrapezoidalRuleIntergral.h"
 #include "source/data_structures/interval/Interval.h"

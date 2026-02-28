@@ -3,7 +3,7 @@
 #include "source/distributions/RandomVariable.hpp"
 #include "source/distributions/continuous_distributions/ContinuousRandomVariableType.h"
 #include "source/data_structures/interval/Interval.h"
-#include "source/functions/function/Function.hpp"
+#include "source/functions/Function.hpp"
 #include "source/functions/density_function/uniform_density_function/UniformDensityFunction.h"
 #include "source/data_structures/vector/Vector.hpp"
 #include "source/functions/density_function/normal_density_function/NormalDensityFunction.h"

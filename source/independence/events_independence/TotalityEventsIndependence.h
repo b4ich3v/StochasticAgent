@@ -2,7 +2,7 @@
 
 #include "source/data_structures/vector/Vector.hpp"
 #include "source/events/set_of_elementary_events/event/Event.h"
-#include "source/functions/function/Function.hpp"
+#include "source/functions/Function.hpp"
 
 Event intersectSubset(const Vector<Event>& events, size_t mask);
 

@@ -2,7 +2,7 @@
 
 #include "source/sigma_algebra/SigmaAlgebra.h"
 #include "source/events/set_of_elementary_events/omega/Omega.h"
-#include "source/functions/function/Function.hpp"
+#include "source/functions/Function.hpp"
 
 
 class ProbabilitySpace {
