@@ -18,7 +18,7 @@ double Uniform::getExpectation() const {
 }
 
 double Uniform::getVariance() const {
-    return (HelperFunctions::power(this->getParameters()[1] - this->getParameters()[0], 2)) / 12;
+    return (std::pow(this->getParameters()[1] - this->getParameters()[0], 2)) / 12;
 }
 
 RandomVariable<Interval>* Uniform::clone() const{
