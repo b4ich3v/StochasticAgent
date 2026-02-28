@@ -2,6 +2,7 @@
 #include "source/data_structures/integration/trapezoidal_rule_intergral/TrapezoidalRuleIntergral.h"
 #include "source/data_structures/integration/Integral.h"
 #include "source/data_structures/combinatorics/k_selection/KSelection.h"
+#include "source/Constants.h"
 
 Uniform::Uniform(double lower, double upper): ContinuousRandomVariable([&]() {
     Vector<double> params;
@@ -11,7 +12,7 @@ Uniform::Uniform(double lower, double upper): ContinuousRandomVariable([&]() {
 }(), ContinuousRandomVariableType::Uniform) {}
 
 double Uniform::calculateProbability(const Interval& interval) const {
-    Integral* intergral = new TrapezoidalRuleIntergral(this->getDensityFunction(), 1000000);
+    Integral* intergral = new TrapezoidalRuleIntergral(this->getDensityFunction(), COUNT_OF_SUB_INTERVALS);
     double result = intergral->intergrate(interval.getLeftComponent(), interval.getRightComponent());
 
     delete intergral;
