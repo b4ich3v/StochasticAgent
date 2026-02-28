@@ -101,19 +101,3 @@ uint32_t HelperFunctions::permutation(uint32_t n, uint32_t k) {
 
     return (uint32_t)(result);
 }
-
-uint32_t HelperFunctions::power(uint32_t n, uint32_t k) {
-    uint32_t result = 1;
-    for (uint32_t i = 0; i < k; i++) {
-        result *= n;
-    }
-    return result;
-}
-
-double HelperFunctions::power(double n, uint32_t k) {
-    double result = 1.0;
-    for (uint32_t i = 0; i < k; i++) {
-        result *= n;
-    }
-    return result;
-}
