@@ -3,7 +3,8 @@
 #include "source/Constants.h"
 #include <stdexcept>
 
-Poisson::Poisson(double lambda): DiscreteRandomVariable(DiscreteRandomVariableType::Poisson) {
+Poisson::Poisson(double lambda): 
+    DiscreteRandomVariable(DiscreteRandomVariableType::Poisson) {
     this->setLambda(lambda);
 }
 

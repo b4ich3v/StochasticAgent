@@ -122,7 +122,7 @@ void test4() {
 }
 
 void test5() {
-    RandomVariable<Interval>* uniform = new Uniform(0 ,1);
+    ContinuousRandomVariable<double>* uniform = new Uniform(0 ,1);
     std::cout << "The expectation is: " << uniform->getExpectation() << std::endl;
     std::cout << "The variance is: " << uniform->getVariance() << std::endl;
     std::cout << uniform->calculateProbability(Interval(0, 0.5)) << std::endl;
@@ -131,7 +131,7 @@ void test5() {
 }
 
 void test6() {
-    RandomVariable<Interval>* normal = new Normal(0 ,1);
+    ContinuousRandomVariable<double>* normal = new Normal(0 ,1);
     std::cout << "The expectation is: " << normal->getExpectation() << std::endl;
     std::cout << "The variance is: " << normal->getVariance() << std::endl;
     std::cout << normal->calculateProbability(Interval(-0.5, 1)) << std::endl;
@@ -140,7 +140,7 @@ void test6() {
 }
 
 void test7() {
-    RandomVariable<Interval>* exponential = new Exponential(3);
+    ContinuousRandomVariable<double>* exponential = new Exponential(3);
     std::cout << "The expectation is: " << exponential->getExpectation() << std::endl;
     std::cout << "The variance is: " << exponential->getVariance() << std::endl;
     std::cout << exponential->calculateProbability(Interval(0, 1)) << std::endl;
@@ -148,7 +148,17 @@ void test7() {
     delete exponential;
 }
 
-int main() {
+void test8() {
+    BernoulliSchemeRandomVariable<bool>* bernoulli = new Bernoulli(0.5);
+    std::cout << "The expectation is: " << bernoulli->getExpectation() << std::endl;
+    std::cout << "The variance is: " << bernoulli->getVariance() << std::endl;
+    std::cout << bernoulli->calculateProbability(0) << std::endl;
+    std::cout << bernoulli->calculateProbability(1) << std::endl;
 
+    delete bernoulli;
+}
+
+int main() {
+    test8();
     return 0;
 }

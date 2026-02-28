@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "source/distributions/discrete_distributions/DiscreteRandomVariableType.h"
 #include "source/distributions/discrete_distributions/DiscreteRandomVariable.hpp"
 
 typedef double Success;
@@ -11,16 +12,14 @@ typedef double Failure;
 template <class T>
 class BernoulliSchemeRandomVariable: public DiscreteRandomVariable<T> {
 private:
-    RandomVariableType type = RandomVariableType::None;
     Success success = 0.0;
     Failure failure = 0.0;
 
-    void setType(RandomVariableType type);
     void setSuccessRate(Success success);
     void setFailureRate(Failure failure);
 
 public:
-    BernoulliSchemeRandomVariable(Success success, RandomVariableType type);
+    BernoulliSchemeRandomVariable(Success success, DiscreteRandomVariableType type);
 
     Success getSuccessRate() const;
     Failure getFailureRate() const;
@@ -28,17 +27,10 @@ public:
 };
 
 template <class T>
-BernoulliSchemeRandomVariable<T>::BernoulliSchemeRandomVariable(Success success, RandomVariableType type)
-    : DiscreteRandomVariable<T>(DiscreteRandomVariableType::None) {
-    this->setType(type);
+BernoulliSchemeRandomVariable<T>::BernoulliSchemeRandomVariable(Success success, DiscreteRandomVariableType type)
+    : DiscreteRandomVariable<T>(type) {
     this->setSuccessRate(success);
     this->setFailureRate(1 - success);
-}
-
-template <class T>
-void BernoulliSchemeRandomVariable<T>::setType(RandomVariableType type) {
-    if (type == RandomVariableType::None) throw std::logic_error("Must be type different from None");
-    this->type = type;
 }
 
 template <class T>

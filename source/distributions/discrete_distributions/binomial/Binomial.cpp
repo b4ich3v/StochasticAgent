@@ -1,12 +1,13 @@
 #include "source/distributions/discrete_distributions/binomial/Binomial.h"
 #include "source/data_structures/combinatorics/k_selection/KSelection.h"
 
-Binomial::Binomial(uint32_t countOfExperiments, Success success): BernoulliSchemeRandomVariable(success, RandomVariableType::Discrete) {
+Binomial::Binomial(uint32_t countOfExperiments, Success success): 
+    BernoulliSchemeRandomVariable(success, DiscreteRandomVariableType::Binomial) {
     this->setCountOfExperiments(countOfExperiments);
 }
 
 Binomial::Binomial(const HeterogeneousContainer<BernoulliSchemeRandomVariable<bool>>& countainerOfBernouliis): 
-    BernoulliSchemeRandomVariable(countainerOfBernouliis.getSize() > 0 ? countainerOfBernouliis[0]->getSuccessRate() : 0.0, RandomVariableType::Discrete) {
+    BernoulliSchemeRandomVariable(countainerOfBernouliis.getSize() > 0 ? countainerOfBernouliis[0]->getSuccessRate() : 0.0, DiscreteRandomVariableType::Binomial) {
         if (countainerOfBernouliis.getSize() == 0) {
             throw std::logic_error("Binomial requires at least one Bernoulli trial");
         }

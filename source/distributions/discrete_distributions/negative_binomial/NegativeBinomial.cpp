@@ -1,12 +1,13 @@
 #include "source/distributions/discrete_distributions/negative_binomial/NegativeBinomial.h"
 #include "source/data_structures/combinatorics/k_selection/KSelection.h"
 
-NegativeBinomial::NegativeBinomial(uint32_t successesTarget, Success success): BernoulliSchemeRandomVariable(success, RandomVariableType::Discrete) {
+NegativeBinomial::NegativeBinomial(uint32_t successesTarget, Success success): 
+    BernoulliSchemeRandomVariable(success, DiscreteRandomVariableType::NegativeBinomial) {
     this->setCountOfExperiments(successesTarget);
 }
 
 NegativeBinomial::NegativeBinomial(const HeterogeneousContainer<BernoulliSchemeRandomVariable<uint32_t>>& countainerOfGeometrics)
-    : BernoulliSchemeRandomVariable(countainerOfGeometrics.getSize() > 0 ? countainerOfGeometrics[0]->getSuccessRate() : 0.0, RandomVariableType::Discrete) {
+    : BernoulliSchemeRandomVariable(countainerOfGeometrics.getSize() > 0 ? countainerOfGeometrics[0]->getSuccessRate() : 0.0, DiscreteRandomVariableType::NegativeBinomial) {
     if (countainerOfGeometrics.getSize() == 0) {
         throw std::logic_error("Negative Binomial requires at least one geometric trial");
     }
