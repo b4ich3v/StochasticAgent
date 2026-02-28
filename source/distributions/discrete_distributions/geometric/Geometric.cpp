@@ -4,7 +4,7 @@
 Geometric::Geometric(Success success): BernoulliSchemeRandomVariable(success, TypeOfRandomVariable::Discrete) {}
 
 double Geometric::calculateProbability(const uint32_t& number) const {
-    return this->getSuccessRate() * HelperFunctions::power(this->getFailureRate(), number);
+    return this->getSuccessRate() * std::pow(this->getFailureRate(), number);
 }
 
 double Geometric::getExpectation() const {
@@ -12,7 +12,7 @@ double Geometric::getExpectation() const {
 }
 
 double Geometric::getVariance() const {
-    return this->getFailureRate() / HelperFunctions::power(this->getSuccessRate(), 2);
+    return this->getFailureRate() / std::pow(this->getSuccessRate(), 2);
 }
 
 BernoulliSchemeRandomVariable<uint32_t>* Geometric::clone() const {

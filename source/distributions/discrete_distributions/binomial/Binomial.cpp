@@ -33,8 +33,8 @@ void Binomial::setCountOfExperiments(uint32_t countOfExperiments) {
 double Binomial::calculateProbability(const uint32_t& number) const {
     if (number > this->countOfExperiments) return 0.0;
     return KSelection(KSelectionPattern::Combination, this->countOfExperiments, number).generateCount() * 
-        HelperFunctions::power(this->getSuccessRate(), number) * 
-        HelperFunctions::power(this->getFailureRate(), this->countOfExperiments - number);
+        std::pow(this->getSuccessRate(), number) * 
+        std::pow(this->getFailureRate(), this->countOfExperiments - number);
 }
 
 double Binomial::getExpectation() const {

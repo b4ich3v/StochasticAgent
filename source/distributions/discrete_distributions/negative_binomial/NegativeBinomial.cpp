@@ -33,7 +33,7 @@ void NegativeBinomial::setCountOfExperiments(uint32_t successesTarget) {
 double NegativeBinomial::calculateProbability(const uint32_t& number) const {
     uint32_t r = this->successesTarget;
     uint32_t combinations = HelperFunctions::binomial(number + r - 1, r - 1);
-    return combinations * HelperFunctions::power(this->getSuccessRate(), r) * HelperFunctions::power(this->getFailureRate(), number);
+    return combinations * std::pow(this->getSuccessRate(), r) * std::pow(this->getFailureRate(), number);
 }
 
 double NegativeBinomial::getExpectation() const {
@@ -41,7 +41,7 @@ double NegativeBinomial::getExpectation() const {
 }
 
 double NegativeBinomial::getVariance() const {
-    return this->getCountOfSuccessesTarget() * this->getFailureRate() / HelperFunctions::power(this->getSuccessRate(), 2);
+    return this->getCountOfSuccessesTarget() * this->getFailureRate() / std::pow(this->getSuccessRate(), 2);
 }
 
 BernoulliSchemeRandomVariable<uint32_t>* NegativeBinomial::clone() const {
