@@ -1,7 +1,7 @@
 #include "source/distributions/discrete_distributions/geometric/Geometric.h"
 #include "source/data_structures/combinatorics/k_selection/KSelection.h"
 
-Geometric::Geometric(Success success): BernoulliSchemeRandomVariable(success, TypeOfRandomVariable::Discrete) {}
+Geometric::Geometric(Success success): BernoulliSchemeRandomVariable(success, RandomVariableType::Discrete) {}
 
 double Geometric::calculateProbability(const uint32_t& number) const {
     return this->getSuccessRate() * std::pow(this->getFailureRate(), number);

@@ -1,5 +1,5 @@
 #pragma once
 
-enum class TypeOfRandomVariable {
+enum class RandomVariableType {
     None, Discrete, Continuous
 };

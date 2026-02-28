@@ -12,12 +12,12 @@ protected:
 
 public:
     DiscreteRandomVariable(DiscreteRandomVariableType type);
-    TypeOfRandomVariable getOverallType() const override;
+    RandomVariableType getOverallType() const override;
 };
 
 template <class T>
-TypeOfRandomVariable DiscreteRandomVariable<T>::getOverallType() const {
-    return TypeOfRandomVariable::Discrete;
+RandomVariableType DiscreteRandomVariable<T>::getOverallType() const {
+    return RandomVariableType::Discrete;
 }
 
 template <class T>

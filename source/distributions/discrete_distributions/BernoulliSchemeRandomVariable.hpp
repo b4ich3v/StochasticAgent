@@ -11,24 +11,24 @@ typedef double Failure;
 template <class T>
 class BernoulliSchemeRandomVariable: public DiscreteRandomVariable<T> {
 private:
-    TypeOfRandomVariable type = TypeOfRandomVariable::None;
+    RandomVariableType type = RandomVariableType::None;
     Success success = 0.0;
     Failure failure = 0.0;
 
-    void setType(TypeOfRandomVariable type);
+    void setType(RandomVariableType type);
     void setSuccessRate(Success success);
     void setFailureRate(Failure failure);
 
 public:
-    BernoulliSchemeRandomVariable(Success success, TypeOfRandomVariable type);
+    BernoulliSchemeRandomVariable(Success success, RandomVariableType type);
 
     Success getSuccessRate() const;
     Failure getFailureRate() const;
-    TypeOfRandomVariable getType() const;
+    RandomVariableType getType() const;
 };
 
 template <class T>
-BernoulliSchemeRandomVariable<T>::BernoulliSchemeRandomVariable(Success success, TypeOfRandomVariable type)
+BernoulliSchemeRandomVariable<T>::BernoulliSchemeRandomVariable(Success success, RandomVariableType type)
     : DiscreteRandomVariable<T>(DiscreteRandomVariableType::None) {
     this->setType(type);
     this->setSuccessRate(success);
@@ -36,8 +36,8 @@ BernoulliSchemeRandomVariable<T>::BernoulliSchemeRandomVariable(Success success,
 }
 
 template <class T>
-void BernoulliSchemeRandomVariable<T>::setType(TypeOfRandomVariable type) {
-    if (type == TypeOfRandomVariable::None) throw std::logic_error("Must be type different from None");
+void BernoulliSchemeRandomVariable<T>::setType(RandomVariableType type) {
+    if (type == RandomVariableType::None) throw std::logic_error("Must be type different from None");
     this->type = type;
 }
 
@@ -64,6 +64,6 @@ Failure BernoulliSchemeRandomVariable<T>::getFailureRate() const {
 }
 
 template <class T>
-TypeOfRandomVariable BernoulliSchemeRandomVariable<T>::getType() const {
+RandomVariableType BernoulliSchemeRandomVariable<T>::getType() const {
     return this->type;
 }
