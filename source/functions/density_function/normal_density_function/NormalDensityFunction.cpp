@@ -10,9 +10,9 @@ NormalDensityFunction::NormalDensityFunction(double expectation, double sigma):
     this->setSigma(sigma);
 }
 
-void NormalDensityFunction::setSigma(double sigma) {
-    if (sigma <= 0) throw std::logic_error("Sigma parameter must be greater than zero");
-    this->sigma = sigma;
+void NormalDensityFunction::setSigma(double sigmaSquared) {
+    if (sigmaSquared <= 0) throw std::logic_error("sigmaSquared parameter must be greater than zero");
+    this->sigmaSquared = sigmaSquared;
 }
 
 void NormalDensityFunction::setExpectation(double expectation) {
@@ -21,10 +21,10 @@ void NormalDensityFunction::setExpectation(double expectation) {
 
 double NormalDensityFunction::operator () (const double& input) const {
     const double exponent = -std::pow(input - this->expectation, 2) /
-        (2 * std::pow(this->sigma, 2));
+        (2 * std::pow(this->sigmaSquared, 2));
 
     return std::pow(EULER_NUMBER, exponent) /
-        (this->sigma * std::sqrt(2 * PI));
+        (this->sigmaSquared * std::sqrt(2 * PI));
 }
 
 Function<double, double>* NormalDensityFunction::clone() const {
