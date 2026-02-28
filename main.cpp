@@ -133,7 +133,7 @@ void test6() {
     RandomVariable<Interval>* normal = new Normal(0 ,1);
     std::cout << "The expectation is: " << normal->getExpectation() << std::endl;
     std::cout << "The variance is: " << normal->getVariance() << std::endl;
-    std::cout << normal->calculateProbability(Interval(-INT_MAX, INT_MAX)) << std::endl;
+    std::cout << normal->calculateProbability(Interval(-0.5, 1)) << std::endl;
 
     delete normal;
 }
