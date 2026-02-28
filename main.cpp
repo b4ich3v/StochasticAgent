@@ -6,12 +6,15 @@
 #include "source/distributions/discrete_distributions/BernoulliSchemeRandomVariable.hpp"
 #include "source/Constants.h"
 #include "source/functions/Function.hpp"
+#include "source/distributions/discrete_distributions/geometric/Geometric.h"
+#include "source/distributions/discrete_distributions/negative_binomial/NegativeBinomial.h"
 #include "source/functions/density_function/uniform_density_function/UniformDensityFunction.h"
 #include "source/data_structures/integration/trapezoidal_rule_intergral/TrapezoidalRuleIntergral.h"
 #include "source/data_structures/interval/Interval.h"
 #include "source/distributions/continuous_distributions/uniform/Uniform.h"
 #include "source/distributions/continuous_distributions/normal/Normal.h"
 #include "source/distributions/continuous_distributions/exponential/Exponential.h"
+#include "source/distributions/discrete_distributions/poisson/Poisson.h"
 #include <iostream>
 
 
@@ -158,7 +161,43 @@ void test8() {
     delete bernoulli;
 }
 
+void test9() {
+    BernoulliSchemeRandomVariable<uint32_t>* binomial = new Binomial(10, 0.5);
+    std::cout << "The expectation is: " << binomial->getExpectation() << std::endl;
+    std::cout << "The variance is: " << binomial->getVariance() << std::endl;
+    for (size_t i = 0; i <= 10; i++) std::cout << binomial->calculateProbability(i) << std::endl;
+
+    delete binomial;
+}
+
+void test10() {
+    BernoulliSchemeRandomVariable<uint32_t>* geometric = new Geometric(0.5);
+    std::cout << "The expectation is: " << geometric->getExpectation() << std::endl;
+    std::cout << "The variance is: " << geometric->getVariance() << std::endl;
+    for (size_t i = 0; i <= 10; i++) std::cout << geometric->calculateProbability(i) << std::endl;
+
+    delete geometric;
+}
+
+void test11() {
+    BernoulliSchemeRandomVariable<uint32_t>* negativeBinomial = new NegativeBinomial(10, 0.5);
+    std::cout << "The expectation is: " << negativeBinomial->getExpectation() << std::endl;
+    std::cout << "The variance is: " << negativeBinomial->getVariance() << std::endl;
+    for (size_t i = 0; i <= 10; i++) std::cout << negativeBinomial->calculateProbability(i) << std::endl;
+
+    delete negativeBinomial;
+}
+
+void test12() {
+    DiscreteRandomVariable<uint32_t>* poisson = new Poisson(5);
+    std::cout << "The expectation is: " << poisson->getExpectation() << std::endl;
+    std::cout << "The variance is: " << poisson->getVariance() << std::endl;
+    for (size_t i = 0; i <= 10; i++) std::cout << poisson->calculateProbability(i) << std::endl;
+
+    delete poisson;
+}
+
 int main() {
-    test8();
+
     return 0;
 }
