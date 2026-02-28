@@ -28,7 +28,9 @@ SRC := \
 	source/events/set_of_elementary_events/full_group_of_events/FullGroupOfEvents.cpp \
 	source/data_structures/integration/trapezoidal_rule_intergral/TrapezoidalRuleIntergral.cpp \
 	source/functions/density_function/uniform_density_function/UniformDensityFunction.cpp \
-	source/functions/density_function/normal_density_function/NormalDensityFunction.cpp
+	source/functions/density_function/normal_density_function/NormalDensityFunction.cpp \
+	source/distributions/continuous_distributions/uniform/Uniform.cpp \
+	source/distributions/continuous_distributions/normal/Normal.cpp
 
 .PHONY: all clean run
 
