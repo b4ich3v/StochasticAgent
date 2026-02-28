@@ -21,10 +21,10 @@ void NormalDensityFunction::setExpectation(double expectation) {
 
 double NormalDensityFunction::operator () (const double& input) const {
     const double exponent = -std::pow(input - this->expectation, 2) /
-        (2 * std::pow(this->sigmaSquared, 2));
+        (2 * this->sigmaSquared);
 
     return std::pow(EULER_NUMBER, exponent) /
-        (this->sigmaSquared * std::sqrt(2 * PI));
+        std::sqrt(2 * PI * this->sigmaSquared);
 }
 
 Function<double, double>* NormalDensityFunction::clone() const {

@@ -114,13 +114,16 @@ template <class T>
 void ContinuousRandomVariable<T>::copyFrom(const ContinuousRandomVariable& other) {
     this->parameters = other.parameters;
     this->type = other.type;
-        switch (this->type) {
-        case ContinuousRandomVariableType::Uniform: 
-            this->densityFunction = new UniformDensityFunction(Interval(other.getParameters()[0], other.getParameters()[1])); 
-            break;;
-        default: 
-            throw std::runtime_error("Unsupported ContinuousRandomVariable");
-        }
+    switch (this->type) {
+    case ContinuousRandomVariableType::Uniform:
+        this->densityFunction = new UniformDensityFunction(Interval(other.getParameters()[0], other.getParameters()[1]));
+        break;
+    case ContinuousRandomVariableType::Normal:
+        this->densityFunction = new NormalDensityFunction(other.getParameters()[0], other.getParameters()[1]);
+        break;
+    default:
+        throw std::runtime_error("Unsupported ContinuousRandomVariable");
+    }
 }
 
 template <class T>
