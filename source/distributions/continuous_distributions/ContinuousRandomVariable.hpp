@@ -95,7 +95,7 @@ template <class T>
 void ContinuousRandomVariable<T>::setDensityFunction() {
     switch (this->type) {
     case ContinuousRandomVariableType::Uniform: this->densityFunction = new UniformDensityFunction(Interval(this->parameters[0], this->parameters[1])); break;
-    case ContinuousRandomVariableType::Normal: this->densityFunction = new NormalDensityFunction(this->parameters[0], this->parameters[1])); break;
+    case ContinuousRandomVariableType::Normal: this->densityFunction = new NormalDensityFunction(this->parameters[0], this->parameters[1]); break;
     default: throw std::runtime_error("Unsupported ContinuousRandomVariable");
     }
 }
