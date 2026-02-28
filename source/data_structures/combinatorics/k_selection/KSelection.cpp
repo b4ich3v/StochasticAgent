@@ -1,5 +1,6 @@
 #include "source/data_structures/combinatorics/k_selection/KSelection.h"
 #include "source/data_structures/combinatorics/factoriel/Factoriel.h"
+#include "algorithm"
 
 KSelection::KSelection(KSelectionPattern buildingPattern, uint32_t n, uint32_t k) {
     this->setN(n);
@@ -37,7 +38,7 @@ uint32_t KSelection::generateCount() const {
         case KSelectionPattern::Combination: return HelperFunctions::binomial(this->n, this->k);
         case KSelectionPattern::CombinationWithRepetition: return HelperFunctions::binomial(this->n + this->k - 1, this->k);
         case KSelectionPattern::Variation: return HelperFunctions::permutation(this->n, this->k);
-        case KSelectionPattern::VariationWithRepetition: return HelperFunctions::power(this->n, this->k);
+        case KSelectionPattern::VariationWithRepetition: return std::pow(this->n, this->k);
         case KSelectionPattern::Permutation: return HelperFunctions::permutation(this->n, this->n);
         default: throw std::logic_error("Unsupported pattern");
     }
