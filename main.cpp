@@ -9,6 +9,8 @@
 #include "source/functions/density_function/uniform_density_function/UniformDensityFunction.h"
 #include "source/data_structures/integration/trapezoidal_rule_intergral/TrapezoidalRuleIntergral.h"
 #include "source/data_structures/interval/Interval.h"
+#include "source/distributions/continuous_distributions/uniform/Uniform.h"
+#include "source/distributions/continuous_distributions/normal/Normal.h"
 #include <iostream>
 
 
@@ -118,7 +120,25 @@ void test4() {
     delete integral;
 }
 
-int main() {
+void test5() {
+    RandomVariable<Interval>* uniform = new Uniform(0 ,1);
+    std::cout << "The expectation is: " << uniform->getExpectation() << std::endl;
+    std::cout << "The variance is: " << uniform->getVariance() << std::endl;
+    std::cout << uniform->calculateProbability(Interval(0, 0.5)) << std::endl;
 
+    delete uniform;
+}
+
+void test6() {
+    RandomVariable<Interval>* normal = new Normal(0 ,1);
+    std::cout << "The expectation is: " << normal->getExpectation() << std::endl;
+    std::cout << "The variance is: " << normal->getVariance() << std::endl;
+    std::cout << normal->calculateProbability(Interval(-INT_MAX, INT_MAX)) << std::endl;
+
+    delete normal;
+}
+
+int main() {
+    test5();
     return 0;
 }
