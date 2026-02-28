@@ -30,7 +30,8 @@ SRC := \
 	source/functions/density_function/uniform_density_function/UniformDensityFunction.cpp \
 	source/functions/density_function/normal_density_function/NormalDensityFunction.cpp \
 	source/distributions/continuous_distributions/uniform/Uniform.cpp \
-	source/distributions/continuous_distributions/normal/Normal.cpp
+	source/distributions/continuous_distributions/normal/Normal.cpp \
+	source/functions/density_function/exponential_density_function/ExponentialDensityFunction.cpp
 
 .PHONY: all clean run
 

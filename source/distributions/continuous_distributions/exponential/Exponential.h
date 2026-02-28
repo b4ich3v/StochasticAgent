@@ -1,0 +1,15 @@
+#pragma once
+
+#include "source/distributions/continuous_distributions/ContinuousRandomVariable.hpp"
+#include <iostream>
+
+
+class Exponential: ContinuousRandomVariable<double> {
+public:
+    Exponential(double lambda);
+
+    double calculateProbability(const Interval& interval) const override;
+    double getExpectation() const override;
+    double getVariance() const override;
+    RandomVariable<Interval>* clone() const override;
+};

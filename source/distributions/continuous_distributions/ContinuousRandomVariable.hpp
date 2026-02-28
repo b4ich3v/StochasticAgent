@@ -7,6 +7,7 @@
 #include "source/functions/density_function/uniform_density_function/UniformDensityFunction.h"
 #include "source/data_structures/vector/Vector.hpp"
 #include "source/functions/density_function/normal_density_function/NormalDensityFunction.h"
+#include "source/functions/density_function/exponential_density_function/ExponentialDensityFunction.h"
 
 
 template <class T>
@@ -94,8 +95,12 @@ void ContinuousRandomVariable<T>::setType(ContinuousRandomVariableType type) {
 template <class T>
 void ContinuousRandomVariable<T>::setDensityFunction() {
     switch (this->type) {
-    case ContinuousRandomVariableType::Uniform: this->densityFunction = new UniformDensityFunction(Interval(this->parameters[0], this->parameters[1])); break;
-    case ContinuousRandomVariableType::Normal: this->densityFunction = new NormalDensityFunction(this->parameters[0], this->parameters[1]); break;
+    case ContinuousRandomVariableType::Uniform: 
+        this->densityFunction = new UniformDensityFunction(Interval(this->parameters[0], this->parameters[1])); break;
+    case ContinuousRandomVariableType::Normal: 
+        this->densityFunction = new NormalDensityFunction(this->parameters[0], this->parameters[1]); break;
+    case ContinuousRandomVariableType::Exponential:
+        this->densityFunction = new ExponentialDensityFunction(this->parameters[0]); break;
     default: throw std::runtime_error("Unsupported ContinuousRandomVariable");
     }
 }
@@ -116,11 +121,11 @@ void ContinuousRandomVariable<T>::copyFrom(const ContinuousRandomVariable& other
     this->type = other.type;
     switch (this->type) {
     case ContinuousRandomVariableType::Uniform:
-        this->densityFunction = new UniformDensityFunction(Interval(other.getParameters()[0], other.getParameters()[1]));
-        break;
+        this->densityFunction = new UniformDensityFunction(Interval(other.getParameters()[0], other.getParameters()[1])); break;
     case ContinuousRandomVariableType::Normal:
-        this->densityFunction = new NormalDensityFunction(other.getParameters()[0], other.getParameters()[1]);
-        break;
+        this->densityFunction = new NormalDensityFunction(other.getParameters()[0], other.getParameters()[1]); break;
+    case ContinuousRandomVariableType::Exponential:
+        this->densityFunction = new ExponentialDensityFunction(other.getParameters()[0]); break;
     default:
         throw std::runtime_error("Unsupported ContinuousRandomVariable");
     }
@@ -130,7 +135,11 @@ template <class T>
 void ContinuousRandomVariable<T>::setParameters(const Vector<T>& inputParameters) {
     if (this->type == ContinuousRandomVariableType::Uniform && (inputParameters.getSize() != 2 || inputParameters[0] >= inputParameters[1])) {
         throw std::runtime_error("Uniform distribution requires two parameters with lower < upper");
-    } 
+    } else if (this->type == ContinuousRandomVariableType::Normal && (inputParameters.getSize() != 2)) {
+        throw std::runtime_error("Normal distribution requires two parameters");
+    } else if (this->type == ContinuousRandomVariableType::Exponential && (inputParameters.getSize() != 1 || inputParameters[0] < 0)) {
+        throw std::runtime_error("Exponential distribution requires one parameter and it must be grater than 0");
+    }
     this->parameters = inputParameters;
 }
 

@@ -11,7 +11,7 @@ void ExponentialDensityFunction::setLambda(double lambda) {
 }
 
 double ExponentialDensityFunction::operator () (const double& input) const {
-    this->lambda * std::exp(-this->lambda * input);
+    return this->lambda * std::exp(-this->lambda * input);
 }
     
 Function<double, double>* ExponentialDensityFunction::clone() const {
