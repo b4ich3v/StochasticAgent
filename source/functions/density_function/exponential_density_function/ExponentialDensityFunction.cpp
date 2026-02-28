@@ -1,4 +1,6 @@
 #include "source/functions/density_function/exponential_density_function/ExponentialDensityFunction.h"
+#include <cmath>
+#include <limits>
 
 ExponentialDensityFunction::ExponentialDensityFunction(double lambda): 
     DensityFunction(Domain<double>(), Interval(0, std::numeric_limits<double>::infinity())){
@@ -11,6 +13,7 @@ void ExponentialDensityFunction::setLambda(double lambda) {
 }
 
 double ExponentialDensityFunction::operator () (const double& input) const {
+    if (input < 0.0) return 0.0;
     return this->lambda * std::exp(-this->lambda * input);
 }
     

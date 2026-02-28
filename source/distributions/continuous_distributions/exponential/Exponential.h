@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-class Exponential: ContinuousRandomVariable<double> {
+class Exponential: public ContinuousRandomVariable<double> {
 public:
     Exponential(double lambda);
 

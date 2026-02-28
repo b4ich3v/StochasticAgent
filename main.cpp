@@ -11,6 +11,7 @@
 #include "source/data_structures/interval/Interval.h"
 #include "source/distributions/continuous_distributions/uniform/Uniform.h"
 #include "source/distributions/continuous_distributions/normal/Normal.h"
+#include "source/distributions/continuous_distributions/exponential/Exponential.h"
 #include <iostream>
 
 
@@ -138,7 +139,16 @@ void test6() {
     delete normal;
 }
 
+void test7() {
+    RandomVariable<Interval>* exponential = new Exponential(3);
+    std::cout << "The expectation is: " << exponential->getExpectation() << std::endl;
+    std::cout << "The variance is: " << exponential->getVariance() << std::endl;
+    std::cout << exponential->calculateProbability(Interval(0, 1)) << std::endl;
+
+    delete exponential;
+}
+
 int main() {
-    test6();
+
     return 0;
 }
